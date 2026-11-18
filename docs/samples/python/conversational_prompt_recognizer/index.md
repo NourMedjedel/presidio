@@ -1,5 +1,12 @@
 # Recognizing answers to prompts in call and chat transcripts
 
+This fork reuses **crmarr**'s unmerged upstream draft
+[#2316](https://github.com/data-privacy-stack/presidio/pull/2316), pinned at
+`ddfd1893dd78e72f00a1100124d1738dbeab95e9` with original commit attribution.
+It adds an optional normalizer callback and bounded policy for the
+[French phone sample](../french_conversation_phone/index.md). Original English
+defaults and detection results are preserved. This is not an upstream release.
+
 In a call or chat transcript, the words that say what a number *is* are
 often in the **previous speaker's turn**, not next to the number:
 
@@ -58,8 +65,8 @@ transcript = (
     "CUSTOMER: 5555666677778888#"
 )
 for r in analyzer.analyze(transcript, language="en"):
-    print(r.entity_type, r.score, transcript[r.start : r.end])
-# CREDIT_CARD 0.3 5555666677778888   <- prompted, but fails Luhn: low score
+    print(r.entity_type, r.score, r.start, r.end)
+# The prompted answer fails Luhn and receives score 0.3. Values are not printed.
 ```
 
 Run the sample itself to see a split, spoken card number and a keyed SSN:
@@ -82,6 +89,12 @@ answers.
 - **`valid_score` and `invalid_score`**: scores for answers that pass or fail
   their check.
 - **`max_joined_turns`**: how many turns one answer may span.
+- **`answer_normalizer`**: a trusted developer callback returning normalized text
+  and original offsets. The original English normalizer remains the default.
+- **`turn_policy`**: opt into bounded, same-speaker answers, explicit backchannels,
+  boundary resets and review markers. None retains the original draft behavior.
+  See the French sample for a configured policy. These checks do not make
+  arbitrary developer-supplied regexes safe for untrusted configuration.
 
 ## Limitations
 
@@ -89,6 +102,11 @@ answers.
 - An answer is the first digit run in each customer turn. A correction
   ("sorry, it's actually 5-6-7-7") is not tracked.
 - Prompt phrases are English.
+
+These limitations describe the legacy default. Its original permissive turn
+handling and unbounded English normalizer are not hardened by enabling the
+French sample elsewhere. Use the explicit bounded policy for supported French
+input and read its limitations before handling real transcripts.
 
 ## Source
 

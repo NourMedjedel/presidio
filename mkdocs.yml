@@ -95,7 +95,7 @@ nav:
       - Anonymizing known values: samples/python/Anonymizing known values.ipynb
       - Keeping some entities from being anonymized: samples/python/keep_entities.ipynb
       - Integrating with external services: samples/python/integrating_with_external_services.ipynb
-      - French spoken-phone normalization (experimental): samples/python/french_conversation_phone/index.md
+      - French phone answers and redaction (experimental): samples/python/french_conversation_phone/index.md
       - Remote Recognizer: https://github.com/data-privacy-stack/presidio/blob/main/docs/samples/python/example_remote_recognizer.py
       - Azure AI Language as a Remote Recognizer: samples/python/text_analytics/index.md
       - Azure Health DataServices De-identification as a Remote Recognizer: samples/python/ahds/index.md
