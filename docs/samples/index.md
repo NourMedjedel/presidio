@@ -15,7 +15,7 @@
 | Usage | Images     | Python Notebook                       | [Plot custom bounding boxes](python/plot_custom_bboxes.ipynb)
 | Usage | Text     | Python Notebook                         | [Integrating with external services](python/integrating_with_external_services.ipynb) |
 | Usage | Text       | Python file                           | [Remote Recognizer](python/example_remote_recognizer.py) |
-| Usage | Text       | Python file                           | [French spoken-phone normalization (experimental)](python/french_conversation_phone/index.md) |
+| Usage | Text       | Python file                           | [French phone answers and redaction (experimental)](python/french_conversation_phone/index.md) |
 | Usage | Structured     | Python Notebook                   | [Presidio Structured Basic Usage Notebook](python/example_structured.ipynb) |
 | Usage | Text      | Python file                            | [Azure AI Language as a Remote Recognizer](python/text_analytics/index.md)  |
 | Usage | Text      | Python file                            | [Azure Health Data Services de-identification Service as a Remote Recognizer](python/ahds/index.md)  |
@@ -33,6 +33,7 @@
 | Usage | Text     | AISIX AI Gateway                        | [Protect LLM requests with Presidio and AISIX AI Gateway](docker/aisix.md)|
 | Usage | Text     | Python Notebook                         | [YAML based no-code configuration](python/no_code_config.ipynb) |
 | Usage | Text     | Python file                             | [Using GLiNER within Presidio](python/gliner.md) |
+| Usage | Text     | Python file                             | [Recognizing answers to prompts in call and chat transcripts](python/conversational_prompt_recognizer/index.md) |
 | Usage      | | REST API (postman)                          | [Presidio as a REST endpoint](docker/index.md)|
 | Deployment | | App Service                                 | [Presidio with App Service](deployments/app-service/index.md)|
 | Deployment | | Kubernetes                                  | [Presidio with Kubernetes](deployments/k8s/index.md)|

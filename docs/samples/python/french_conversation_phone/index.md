@@ -1,14 +1,15 @@
-# French spoken-phone normalization (experimental)
+# French phone answers in conversations (experimental)
 
 A customer can answer a phone prompt with “zéro six, douze, trente-quatre…”
-instead of written digits. This sample prepares French number groups for
-recognition while mapping every output character back to the original words.
+instead of written digits, sometimes across several turns. This opt-in sample
+recognizes and replaces those answers using exact spans in the original text.
 It runs locally on CPU with no LLM, API account or NLP-model download.
 
-**Implemented:** normalization and exact offsets, a configured French baseline,
-and a frozen synthetic conversation corpus. Conversation recognition and
-Analyzer-to-Anonymizer redaction are still planned. This utility alone does
-not detect or anonymize PII. No release accuracy is claimed.
+**Implemented:** French normalization, bounded same-speaker recognition, disjoint
+spans, a separate review gate and public Analyzer-to-Anonymizer redaction. This is
+a phone-only experiment, not a guarantee that text is anonymous. The frozen
+release corpus and full supported-Python matrix remain unevaluated; no release
+accuracy is claimed.
 
 ## Run from a checkout
 
@@ -18,14 +19,52 @@ repository root:
 ```bash
 cd presidio-analyzer
 uv sync --locked --group dev
+export PYTHONPATH=../docs/samples/python/conversational_prompt_recognizer:../docs/samples/python/french_conversation_phone
 uv run --locked python ../docs/samples/python/french_conversation_phone/baseline.py
-uv run --locked pytest ../docs/samples/python/french_conversation_phone -q
+uv run --locked --with ../presidio-anonymizer --with cryptography==50.0.2 \
+  python ../docs/samples/python/french_conversation_phone/redact.py
+uv run --locked --with ../presidio-anonymizer --with cryptography==50.0.2 \
+  python ../docs/samples/python/french_conversation_phone/redact.py --scenario correction
+uv run --locked --with ../presidio-anonymizer --with cryptography==50.0.2 \
+  pytest ../docs/samples/python/conversational_prompt_recognizer \
+  ../docs/samples/python/french_conversation_phone -q
 ```
 
 The first command installs the analyzer's locked dependencies and test tools;
-it needs network access once. Runtime does not contact a model provider.
+it needs network access once. `--with` builds this checkout's anonymizer in a
+temporary uv environment; its cryptography version matches the anonymizer lock.
+No analyzer/anonymizer dependency files are modified. Runtime does not contact
+a model provider.
 The core baseline CLI reports case IDs, spans and scores, without transcript
 values. All checked-in examples are synthetic.
+
+The split-answer demo prints:
+
+```text
+AGENT: Quel est votre numéro de téléphone ?
+CLIENT: <PHONE_NUMBER>
+AGENT: Oui.
+CLIENT: <PHONE_NUMBER>.
+```
+
+The correction demo withholds transcript output and prints only review positions.
+Review candidates are checked **before** core-result de-duplication, so a generic
+phone score cannot hide an answer requiring human review. The sample replaces
+phone values without maintaining a reversible mapping.
+
+Prompts must start with `Quel est votre numéro de…`, `Pouvez-vous [me]
+donner/indiquer votre numéro de…`, or `Indiquez/Donnez[-moi]/Saisissez/Dictez
+votre numéro de…`, followed by `téléphone`, `portable` or `mobile`. Accented and
+unaccented forms are supported. Arbitrary paraphrases are not inferred.
+Corrected or withdrawn answers use a finite list of review markers (including
+`non`, `pardon`, `corrige`, `annulez`, `oubliez`) or multiple numeric runs.
+Unmarked corrections and unsupported prompts can be missed. Read the
+[role, boundary, input-limit and scoring policy](scope.md) before using real data.
+
+This is a custom Python sample registered with `registry.add_recognizer(...)`.
+It is not a new core predefined recognizer or a YAML-loadable sample class.
+The configuration test loads the core French registry through
+`RecognizerRegistryProvider`, then explicitly registers the custom recognizer.
 
 To use the standalone utility, place its directory on your Python import path:
 
@@ -68,6 +107,26 @@ a performance estimate. The frozen 220-conversation corpus is for the later
 recognizer evaluation; its release split has not been evaluated or used for
 tuning the normalizer.
 
+The extended French recognizer matches all eight diagnostic cases exactly;
+[results and pinned implementation hashes](conversation-probe-results.json).
+The combined sample suite passes **226 tests** on Python 3.12.14, including the
+original English tests, direct/registry construction, a French YAML-loaded core
+registry with the custom sample added, and real anonymizer output. Coverage is
+100% for French normalization and its configured recognizer, 94% across the
+sample modules, and 93% of changed executable lines. Other supported Python
+versions, the frozen release corpus and resource measurements remain release gates.
+
+With the import path configured above, reproduce the current diagnostic check:
+
+```bash
+uv run --locked python - <<'PY'
+import json
+from baseline import create_analyzer, measure
+from french_phone_recognizer import FrenchPhoneConversationRecognizer
+print(json.dumps(measure(create_analyzer(FrenchPhoneConversationRecognizer())), indent=2))
+PY
+```
+
 ## Existing work and reuse
 
 Reviewed on 18 November 2026, before implementation:
@@ -78,9 +137,10 @@ Reviewed on 18 November 2026, before implementation:
   **crmarr**, implements an English conversation sample. Its language is
   configurable, but its spoken-number vocabulary is English. The comparison
   pins head `ddfd1893dd78e72f00a1100124d1738dbeab95e9`. The French utility
-  deliberately uses its `(normalized_text, offset_map)` contract. Reuse or
-  rebase that sample when adding French recognition; do not publish a competing
-  generic conversation engine or imply that the draft is merged.
+  uses its `(normalized_text, offset_map)` contract. The draft commit is now
+  cherry-picked with original authorship and an origin trailer. The French
+  feature extends that engine with a callback and opt-in bounded policy;
+  the upstream draft is still unmerged. Original English tests are retained.
 - The old French-region typo
   [#2008](https://github.com/data-privacy-stack/presidio/issues/2008) is already
   fixed. `PhoneRecognizer` already supports France. There is no new core
@@ -134,14 +194,14 @@ print(json.dumps(measure(create_analyzer(draft)), indent=2))
 PY
 ```
 
-No upstream code is vendored or modified by this first step. When that draft
-changes, recheck its implementation and tests before choosing an integration.
+This comparison deliberately downloads the **pristine** draft, not the extended
+local copy. When upstream changes, recheck it before rebasing or submitting work.
+The local English engine keeps its original defaults and results; its synthetic
+CLI now prints entity types, scores and positions instead of values.
 
 ## Next gate
 
-Add a French-normalizer callback to the existing conversation sample, then
-implement the bounded role/prompt policy in [the frozen scope](scope.md).
-Verify disjoint original spans and public Analyzer-to-Anonymizer redaction.
-Review incomplete/corrected answers rather than inventing missing digits.
-Keep changed English behavior explicit, add compatibility tests and meet the
-frozen evaluation gates before releasing or recording a redaction demo.
+Complete the supported-Python compatibility checks and resource measurements,
+freeze the candidate, then run the release corpus once and publish failures
+alongside exact-span metrics. Meet those gates before tagging a release or
+presenting a demo as validated redaction. Arabic remains a later workstream.

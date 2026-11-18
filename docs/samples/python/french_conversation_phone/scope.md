@@ -29,7 +29,7 @@ Excluded: `septante`, `huitante`, `nonante`, hundreds, fractional numbers,
 Unicode decimal-digit conversion, decomposed accent normalization, ASR
 homophone repair and automatic correction of malformed number words.
 
-## Conversation policy for the next implementation step
+## Conversation policy
 
 Each line is one explicitly labelled turn. Asking roles are `AGENT`, `BOT`,
 or `CONSEILLER`; answering roles are `CLIENT` or `UTILISATEUR`. Labels must
@@ -45,13 +45,21 @@ Re-prompt explicitly to retry. Limit a transcript to 100,000 characters and
 1,000 turns; reject oversized input without logging its content.
 
 Only a complete answer passing `phonenumbers` France validation is a validated
-candidate (planned score `0.7`, **not** a calibrated probability). Incomplete,
+candidate (score `0.7`, **not** a calibrated probability). Incomplete,
 invalid, ambiguous or corrected answers must be surfaced as review candidates
-(planned score `0.2`) rather than completed or presented as validated. A
+(score `0.2`) rather than completed or presented as validated. A
 threshold of `0.35` excludes review candidates from automatic redaction, so
 applications must handle review separately. This is not a privacy guarantee.
 Corrections never overwrite prior sensitive spans: both supplied versions
-require review. These policies are not implemented by the normalizer alone.
+require review within the bounded answer. These policies are implemented by the
+opt-in conversation recognizer; the number normalizer alone makes no PII decision.
+
+Implementation clarifications (18 November 2026): the pending prompt also expires
+after five intervening turns; correction detection uses documented literal
+markers and multiple numeric runs, not semantic inference. The redaction helper
+withholds output when any review candidate is present, before combined-result
+de-duplication. Fixtures, split hashes, threshold and evaluation targets are
+unchanged. Unsupported paraphrases/unmarked corrections can be missed.
 
 ## Frozen evaluation rubric
 

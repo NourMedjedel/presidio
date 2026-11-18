@@ -1,0 +1,143 @@
+{
+  "candidate_commit": "bf51198dbde39ab56d9f5953af50c9a4102fe682",
+  "scope": "Eight pre-existing synthetic diagnostic probes, not the frozen release corpus or an accuracy estimate.",
+  "configuration": {
+    "language": "fr",
+    "region": "FR",
+    "threshold": 0.35,
+    "nlp": "NoOpNlpEngine; no NER/token/lemma model"
+  },
+  "source_sha256": {
+    "docs/samples/python/conversational_prompt_recognizer/conversational_prompt_recognizer.py": "c1a785b38fd18dd2f89861522b2d128b69fe5149b44d2f30c271b8a29fceb702",
+    "docs/samples/python/french_conversation_phone/french_phone_recognizer.py": "26d1a8eb293724068235f9b6aa20c346cad6069db63616a6085c3863a9a213a0",
+    "docs/samples/python/french_conversation_phone/french_numbers.py": "f927555c17a5a002bd2526ddf5f067dd57309412fd13d7550aabce894fc30db7",
+    "docs/samples/python/french_conversation_phone/redact.py": "b291fd84f2dd230cc892a99222b438c7d174edd1582a5f82d5874e331d73dee2"
+  },
+  "cases": [
+    {
+      "id": "digits-national",
+      "expected_spans": [
+        [
+          52,
+          66
+        ]
+      ],
+      "spans": [
+        [
+          52,
+          66
+        ]
+      ],
+      "scores": [
+        0.7
+      ],
+      "pass": true
+    },
+    {
+      "id": "digits-international",
+      "expected_spans": [
+        [
+          52,
+          69
+        ]
+      ],
+      "spans": [
+        [
+          52,
+          69
+        ]
+      ],
+      "scores": [
+        0.7
+      ],
+      "pass": true
+    },
+    {
+      "id": "spoken-digits",
+      "expected_spans": [
+        [
+          52,
+          100
+        ]
+      ],
+      "spans": [
+        [
+          52,
+          100
+        ]
+      ],
+      "scores": [
+        0.7
+      ],
+      "pass": true
+    },
+    {
+      "id": "spoken-groups",
+      "expected_spans": [
+        [
+          52,
+          116
+        ]
+      ],
+      "spans": [
+        [
+          52,
+          116
+        ]
+      ],
+      "scores": [
+        0.7
+      ],
+      "pass": true
+    },
+    {
+      "id": "split-spoken",
+      "expected_spans": [
+        [
+          52,
+          82
+        ],
+        [
+          103,
+          135
+        ]
+      ],
+      "spans": [
+        [
+          52,
+          82
+        ],
+        [
+          103,
+          135
+        ]
+      ],
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "pass": true
+    },
+    {
+      "id": "quantity-negative",
+      "expected_spans": [],
+      "spans": [],
+      "scores": [],
+      "pass": true
+    },
+    {
+      "id": "price-negative",
+      "expected_spans": [],
+      "spans": [],
+      "scores": [],
+      "pass": true
+    },
+    {
+      "id": "missing-context-negative",
+      "expected_spans": [],
+      "spans": [],
+      "scores": [],
+      "pass": true
+    }
+  ]
+}

@@ -92,22 +92,27 @@ def normalize_french_numbers(text: str) -> Tuple[str, List[Tuple[int, int]]]:
     previous_end = 0
     has_number = False
     for match in _NUMBER.finditer(text):
+        source = match.group()
+        literal = source.isascii() and source.isdigit()
+        key = _COLLAPSE_SEPARATORS.sub(" ", source.lower())
+        digits = source if literal else _FORMS.get(key)
+        # Python's Unicode case-insensitive regex also matches characters such
+        # as dotted I. Preserve unsupported forms rather than guessing or
+        # raising a KeyError containing input text.
+        is_number = digits is not None
         gap = text[previous_end : match.start()]
-        if not (has_number and _GAP.fullmatch(gap)):
+        if not (has_number and is_number and _GAP.fullmatch(gap)):
             output.append(gap)
             mapping.extend((i, i + 1) for i in range(previous_end, match.start()))
 
-        source = match.group()
-        if source.isascii() and source.isdigit():
+        if literal or not is_number:
             output.append(source)
             mapping.extend((i, i + 1) for i in range(match.start(), match.end()))
         else:
-            key = _COLLAPSE_SEPARATORS.sub(" ", source.lower())
-            digits = _FORMS[key]
             output.append(digits)
             mapping.extend((match.start(), match.end()) for _ in digits)
         previous_end = match.end()
-        has_number = True
+        has_number = is_number
 
     output.append(text[previous_end:])
     mapping.extend((i, i + 1) for i in range(previous_end, len(text)))

@@ -74,6 +74,8 @@ def test_group_words_keep_exact_source_span(number, words):
         ("un million", "1 million"),
         ("Le prix est de trente-quatre euros.", "Le prix est de 34 euros."),
         ("Le 16/12/2026, référence ABC0612.", "Le 16/12/2026, référence ABC0612."),
+        ("06 SİX 12", "06 SİX 12"),
+        ("ſix douze", "ſix 12"),
     ],
 )
 def test_supported_forms_and_unknown_text(source, expected):
