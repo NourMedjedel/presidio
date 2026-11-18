@@ -2,12 +2,14 @@
 
 import hashlib
 import json
+import sys
 
 import pytest
 from evaluate import (
     evaluate,
     freeze_candidate,
     load_cases,
+    main,
     score_predictions,
     summarize,
 )
@@ -162,3 +164,89 @@ def test_candidate_manifests_are_not_overwritten(tmp_path, tiny_fixtures):
     with pytest.raises(FileExistsError):
         freeze_candidate(candidate, tiny_fixtures, repetitions=1)
     assert candidate.read_bytes() == before
+
+
+def test_cli_freezes_without_predictions_then_preserves_existing_report(
+    tmp_path, tiny_fixtures, monkeypatch, capsys
+):
+    """The documented commands freeze first and never overwrite prior outcomes."""
+    candidate, output = tmp_path / "candidate.json", tmp_path / "report.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "evaluate.py",
+            "--freeze",
+            str(candidate),
+            "--fixtures",
+            str(tiny_fixtures),
+            "--repetitions",
+            "1",
+        ],
+    )
+    main()
+    assert candidate.exists()
+    assert not output.exists()
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "evaluate.py",
+            "--candidate",
+            str(candidate),
+            "--fixtures",
+            str(tiny_fixtures),
+            "--output",
+            str(output),
+        ],
+    )
+    main()
+    report = json.loads(output.read_text())
+    assert report["measurements"]["core"]["failures"] == ["test-positive"]
+    previous = output.read_bytes()
+    with pytest.raises(SystemExit) as exc:
+        main()
+    assert exc.value.code == 2
+    assert output.read_bytes() == previous
+    captured = capsys.readouterr()
+    assert "Output exists; choose a new path" in captured.err
+    assert "zéro six" not in captured.out
+
+
+@pytest.mark.parametrize(
+    "problem", ["duplicate_id", "invalid_id", "invalid_span", "invalid_schema"]
+)
+def test_fixture_labels_and_annotations_are_validated(tiny_fixtures, problem):
+    """Malformed inputs cannot corrupt metrics or echo arbitrary text in errors."""
+    path = tiny_fixtures / "release.jsonl"
+    case = json.loads(path.read_text())
+    if problem == "duplicate_id":
+        case["id"] = "test-positive"
+    elif problem == "invalid_id":
+        case["id"] = "invalid id with spaces"
+    elif problem == "invalid_span":
+        case["expected_spans"] = [[2, 99999]]
+    else:
+        del case["text"]
+    data = (json.dumps(case) + "\n").encode()
+    path.write_bytes(data)
+    manifest_path = tiny_fixtures / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["files"]["release.jsonl"]["sha256"] = hashlib.sha256(data).hexdigest()
+    manifest_path.write_text(json.dumps(manifest))
+    with pytest.raises(ValueError) as exc:
+        load_cases(tiny_fixtures)
+    assert "trente-quatre" not in str(exc.value)
+    assert "invalid id with spaces" not in str(exc.value)
+
+
+def test_protocol_changes_are_rejected(tmp_path, tiny_fixtures):
+    """A changed threshold cannot be reported under the frozen protocol."""
+    candidate = tmp_path / "candidate.json"
+    pins = freeze_candidate(candidate, tiny_fixtures, repetitions=1)
+    pins["threshold"] = 0.7
+    candidate.write_text(json.dumps(pins))
+    with pytest.raises(
+        ValueError, match="^Candidate protocol or source list is invalid"
+    ):
+        evaluate(candidate, tiny_fixtures)
