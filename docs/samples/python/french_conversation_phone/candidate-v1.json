@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source_commit": "4ea7518b0617e7dfd6bcb983657b67e641d20a35",
+  "created_utc": "2026-11-18T03:21:13.659738+00:00",
+  "sources": {
+    "docs/samples/python/conversational_prompt_recognizer/conversational_prompt_recognizer.py": "c1a785b38fd18dd2f89861522b2d128b69fe5149b44d2f30c271b8a29fceb702",
+    "docs/samples/python/french_conversation_phone/french_numbers.py": "f927555c17a5a002bd2526ddf5f067dd57309412fd13d7550aabce894fc30db7",
+    "docs/samples/python/french_conversation_phone/french_phone_recognizer.py": "26d1a8eb293724068235f9b6aa20c346cad6069db63616a6085c3863a9a213a0",
+    "docs/samples/python/french_conversation_phone/redact.py": "b291fd84f2dd230cc892a99222b438c7d174edd1582a5f82d5874e331d73dee2",
+    "docs/samples/python/french_conversation_phone/baseline.py": "957c2405727a396b004174abbedd86bca92b0e064bc6b1face8e86b6e5ffb9ab",
+    "docs/samples/python/french_conversation_phone/evaluate.py": "73046c05262c4e330d42252b80d9e734838ac843541646525276112a48b4ec1a",
+    "presidio-analyzer/uv.lock": "c553e73b022d37b60d726cf8a7d02ff5056a365d3349de676ef499bf6322beb4",
+    "presidio-anonymizer/uv.lock": "f24a5524c148193d8d2c57ed31c312f3e796a985499a09000bffd846c6513dff"
+  },
+  "fixtures": {
+    "manifest.json": "576ed1e451bfa9de5459ee8a066d4035b4409000b36cc83d04f5ba51849300d8",
+    "development.jsonl": "abb3244fe878bdad449224e3ea8aeb110d172730e940bfe6a8487926e594f4af",
+    "release.jsonl": "78fff3318f7eb482e67c4f630d0c6d47844e6091b2e5853e1f9154d4843df7c2"
+  },
+  "threshold": 0.35,
+  "timing_repetitions": 5,
+  "precision_target": 0.95,
+  "recall_target": 0.95
+}

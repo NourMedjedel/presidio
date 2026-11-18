@@ -7,9 +7,10 @@ It runs locally on CPU with no LLM, API account or NLP-model download.
 
 **Implemented:** French normalization, bounded same-speaker recognition, disjoint
 spans, a separate review gate and public Analyzer-to-Anonymizer redaction. This is
-a phone-only experiment, not a guarantee that text is anonymous. The frozen
-full release corpus and supported-Python matrix remain unevaluated; no release
-accuracy is claimed.
+a phone-only experiment, not a guarantee that text is anonymous. The full
+synthetic corpus and Python 3.11–3.14 matrix pass their declared checks. See the
+[measured results and limitations](reports/README.md): this is narrow regression
+evidence, not independent or production validation.
 
 ## Run from a checkout
 
@@ -104,18 +105,21 @@ the phone and conversation recognizers; it is not a comparison with French NER.
 
 These eight cases diagnose a gap. They are not a representative benchmark or
 a performance estimate. The frozen 220-conversation corpus is for the later
-recognizer evaluation. The full release file has not been run, but its families
-and some exact cases overlap baseline/unit probes. Report it as frozen
+recognizer evaluation. The full corpus has now been run without changing its
+hashes or threshold: [complete report](reports/evaluation-v1.json). Its families
+and some exact cases overlap baseline/unit probes. Treat it as frozen
 project-authored regression evaluation, not independent or unseen-family validation.
 
 The extended French recognizer matches all eight diagnostic cases exactly;
 [results and pinned implementation hashes](conversation-probe-results.json).
-The combined sample suite passes **226 tests** on Python 3.12.14, including the
+The combined sample suite passes **242 tests**, including the
 original English tests, direct/registry construction, a French YAML-loaded core
 registry with the custom sample added, and real anonymizer output. Coverage is
 100% for French normalization and its configured recognizer, 94% across the
-sample modules, and 93% of changed executable lines. Other supported Python
-versions, the frozen release corpus and resource measurements remain release gates.
+sample modules, and 96% of this stage's changed executable lines. The
+[CI matrix](https://github.com/NourMedjedel/presidio/actions/runs/44229522396)
+passes on Python 3.11–3.14, including two model-free core phone checks and 32
+anonymizer checks per job. Full optional NLP/GPU/cloud suites are not run.
 
 With the import path configured above, reproduce the current diagnostic check:
 
@@ -202,7 +206,8 @@ CLI now prints entity types, scores and positions instead of values.
 
 ## Next gate
 
-Complete the supported-Python compatibility checks and resource measurements,
-freeze the candidate, then run the full release corpus and publish failures
-alongside exact-span metrics. Meet those gates before tagging a release or
-presenting a demo as validated redaction. Arabic remains a later workstream.
+The [frozen candidate](candidate-v1.json),
+[full regression/resource report](reports/README.md) and CI evidence are available.
+Next: a short README recording and release review. Independent/real-transcript
+validation remains future work; passing synthetic cases is not a guarantee of
+anonymity. Arabic remains a later workstream.

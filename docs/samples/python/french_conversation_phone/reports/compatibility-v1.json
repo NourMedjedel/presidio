@@ -1,0 +1,146 @@
+{
+  "source_commit": "4ea7518b0617e7dfd6bcb983657b67e641d20a35",
+  "ci": {
+    "id": 44229522396,
+    "head_sha": "4ea7518b0617e7dfd6bcb983657b67e641d20a35",
+    "head_branch": "feat/french-validation",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/NourMedjedel/presidio/actions/runs/44229522396",
+    "jobs": [
+      {
+        "name": "Python 3.13",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/NourMedjedel/presidio/actions/runs/44229522396/job/134550847031"
+      },
+      {
+        "name": "Python 3.11",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/NourMedjedel/presidio/actions/runs/44229522396/job/134550847297"
+      },
+      {
+        "name": "Python 3.14",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/NourMedjedel/presidio/actions/runs/44229522396/job/134550847316"
+      },
+      {
+        "name": "Python 3.12",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/NourMedjedel/presidio/actions/runs/44229522396/job/134550847421"
+      }
+    ]
+  },
+  "checks_per_ci_job": {
+    "sample_tests": 242,
+    "model_free_core_phone_tests": 2,
+    "anonymizer_engine_replace_redact_tests": 32
+  },
+  "not_run": "25 spaCy-model-dependent core phone tests were deselected. Full optional NLP/GPU/cloud and other component suites were not run; core behavior is unchanged.",
+  "local_initial_checks": {
+    "3.11": {
+      "requested_python": "3.11",
+      "checks": {
+        "environment": {
+          "exit_code": 0,
+          "elapsed_seconds": 2.83,
+          "summary": "{\"python\": \"3.11.6\", \"machine\": \"arm64\", \"dependencies\": {\"presidio-analyzer\": \"2.2.366\", \"presidio-anonymizer\": \"2.2.366\", \"phonenumbers\": \"9.0.41\", \"spacy\": \"3.8.16\", \"cryptography\": \"50.0.2\"}}"
+        },
+        "samples": {
+          "exit_code": 0,
+          "elapsed_seconds": 60.59,
+          "summary": "226 passed in 59.02s"
+        },
+        "core_phone_model_free": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.63,
+          "summary": "2 passed, 25 deselected in 0.02s"
+        },
+        "anonymizer": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.19,
+          "summary": "32 passed in 0.03s"
+        }
+      }
+    },
+    "3.12": {
+      "requested_python": "3.12",
+      "checks": {
+        "environment": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.0,
+          "summary": "{\"python\": \"3.12.14\", \"machine\": \"arm64\", \"dependencies\": {\"presidio-analyzer\": \"2.2.366\", \"presidio-anonymizer\": \"2.2.366\", \"phonenumbers\": \"9.0.41\", \"spacy\": \"3.8.16\", \"cryptography\": \"50.0.2\"}}"
+        },
+        "samples": {
+          "exit_code": 0,
+          "elapsed_seconds": 61.08,
+          "summary": "226 passed in 59.23s"
+        },
+        "core_phone_model_free": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.26,
+          "summary": "2 passed, 25 deselected in 0.02s"
+        },
+        "anonymizer": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.52,
+          "summary": "32 passed in 0.03s"
+        }
+      }
+    },
+    "3.13": {
+      "requested_python": "3.13",
+      "checks": {
+        "environment": {
+          "exit_code": 0,
+          "elapsed_seconds": 2.74,
+          "summary": "{\"python\": \"3.13.9\", \"machine\": \"arm64\", \"dependencies\": {\"presidio-analyzer\": \"2.2.366\", \"presidio-anonymizer\": \"2.2.366\", \"phonenumbers\": \"9.0.41\", \"spacy\": \"3.8.16\", \"cryptography\": \"50.0.2\"}}"
+        },
+        "samples": {
+          "exit_code": 0,
+          "elapsed_seconds": 61.37,
+          "summary": "226 passed in 59.74s"
+        },
+        "core_phone_model_free": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.4,
+          "summary": "2 passed, 25 deselected in 0.02s"
+        },
+        "anonymizer": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.25,
+          "summary": "32 passed in 0.03s"
+        }
+      }
+    },
+    "3.14": {
+      "requested_python": "3.14",
+      "checks": {
+        "environment": {
+          "exit_code": 0,
+          "elapsed_seconds": 2.28,
+          "summary": "{\"python\": \"3.14.0\", \"machine\": \"arm64\", \"dependencies\": {\"presidio-analyzer\": \"2.2.366\", \"presidio-anonymizer\": \"2.2.366\", \"phonenumbers\": \"9.0.41\", \"spacy\": \"3.8.16\", \"cryptography\": \"50.0.2\"}}"
+        },
+        "samples": {
+          "exit_code": 0,
+          "elapsed_seconds": 62.19,
+          "summary": "226 passed in 60.22s (0:01:00)"
+        },
+        "core_phone_model_free": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.76,
+          "summary": "2 passed, 25 deselected in 0.02s"
+        },
+        "anonymizer": {
+          "exit_code": 0,
+          "elapsed_seconds": 1.53,
+          "summary": "32 passed in 0.03s"
+        }
+      }
+    }
+  },
+  "local_initial_note": "Initial 226-sample-test implementation checks preceded the evaluator. The final source is verified by the 242-test CI run linked above."
+}
