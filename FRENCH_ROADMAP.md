@@ -4,17 +4,19 @@ This fork develops an opt-in Presidio extension for French phone numbers express
 in conversation, including spoken groups and answers split across speaker turns.
 Owner: Nour Medjedel. Arabic is deferred until after the French release.
 
-**Current status (18 November 2026):** M0, M1 and M2 completed, along with public
-integration (#6) and bounded-input/privacy checks (#8). The sample reuses crmarr's
-draft conversation engine with attribution and adds French normalization,
-same-speaker boundaries, exact disjoint spans and public Analyzer-to-Anonymizer
-redaction. Review candidates withhold transcript output. Tests pass on Python
-3.12.14: 226 tests, 94% combined sample coverage, 93% changed-line coverage, and
-100% for French normalization and the configured recognizer. Eight diagnostic
-probes match exactly. The 220-conversation frozen release corpus and full
-Python compatibility matrix remain unevaluated; no release accuracy is claimed.
-Some release cases overlap known probes: the corpus is frozen project-authored
-regression evaluation, not independent or unseen-family validation.
+**Current status (18 November 2026):** M0–M3 completed. The sample recognizes and
+redacts bounded French phone answers with a separate review gate. The exact-source
+CI matrix passes on Python 3.11–3.14: 242 sample tests, two model-free upstream
+phone checks and 32 anonymizer checks per job. Combined sample coverage is 94%;
+this stage's changed-line coverage is 96%.
+
+The frozen full corpus produced 120/120 exact spans and 220/220 expected outputs
+for the extension, versus 20/120 spans and 140/220 outputs for the configured core.
+Source/data pins, every baseline failure and measurements are published in
+[the report](docs/samples/python/french_conversation_phone/reports/README.md).
+These are narrow project-authored synthetic regression results with known probe
+overlap, not independent or production validation. M4 recording/release review
+remains open; no French release tag has been created.
 
 [Run the sample and reproduce the baseline](docs/samples/python/french_conversation_phone/index.md).
 [Frozen grammar and evaluation policy](docs/samples/python/french_conversation_phone/scope.md).
@@ -36,10 +38,9 @@ implementation are separate follow-ups.
 
 ## Milestones
 
-Work proceeds by acceptance gates, not invented deadlines. M0–M2 are complete.
-M3 remains open for #7 (compatibility/regressions) and #9 (release evaluation);
-#6 and #8 are complete. M4 and Arabic remain open. A milestone is complete only
-when its linked criteria are met.
+Work proceeds by acceptance gates, not invented deadlines. M0–M3 are complete;
+M4 and Arabic remain open. A milestone is complete only when its linked criteria
+are met.
 
 | Milestone | Issues | Exit criteria |
 | --- | --- | --- |
@@ -71,10 +72,11 @@ The issue bodies contain the deliverables, tests and acceptance criteria.
 
 ## Next action
 
-Finish #7's supported-Python compatibility checks, confirm input/resource
-measurements, then freeze a release candidate and run #9's full corpus evaluation
-without retuning on its results. Preserve failures in the report. Only after
-these gates should #10 add a README recording and #11 tag a release.
+Add #10's short README recording using the tested synthetic split-answer and
+review scenarios. Then complete #11's release review and fresh-install checks
+before tagging the fork sample. Keep benchmark scope and limitations visible.
+An upstream contribution remains a separate attributable proposal, not an
+automatic consequence of a fork release.
 
 The [draft conversation sample](https://github.com/data-privacy-stack/presidio/pull/2316)
 was rechecked and cherry-picked with original authorship and an origin trailer.

@@ -85,9 +85,10 @@ require a new version and disclosure of previous results.
 
 Evaluation provenance clarification: baseline and feature unit probes cover the
 known release families, and some cases overlap the release file. The full release
-file has not been evaluated, but it must be reported as a **frozen project-authored
-regression set**, not an unseen-family or independent holdout. Keep this overlap
-visible in the later report; independent validation requires new external cases.
+file has now been evaluated without changing its hashes or threshold. It is a
+**frozen project-authored regression set**, not an unseen-family or independent
+holdout. Keep this overlap visible in the report; independent validation requires
+new external cases.
 
 At the fixed threshold `0.35`, count exact `(entity, start, end)` matches as true
 positives. A shifted, merged, missing or additional span is an error; partial

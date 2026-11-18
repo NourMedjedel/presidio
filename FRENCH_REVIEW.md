@@ -91,26 +91,29 @@ a generic phone score. Public Anonymizer replacement keeps agent turns intact
 and removes the full international prefix. Unknown prompts and unmarked
 corrections remain documented limitations, not a claim of anonymity.
 
-Tests pass on Python 3.12.14: 226 cases including the original English tests,
+Tests pass in the Python 3.11–3.14 CI matrix: 242 cases including the English tests,
 100% coverage for French normalization and the configured recognizer, 94% across
-sample modules and 93% of changed executable lines. Ruff passes for the sample
-and analyzer. Source hashes and all eight diagnostic outcomes are in
+sample modules and 96% of this stage's changed executable lines. Ruff passes for
+the sample and analyzer. Source hashes and all eight diagnostic outcomes are in
 [the new probe report](docs/samples/python/french_conversation_phone/conversation-probe-results.json).
-These diagnostics do not evaluate the frozen release corpus or establish a
-production accuracy estimate. Full supported-Python compatibility and release
-evaluation remain open.
+These diagnostic probes alone are not an accuracy estimate. The full frozen
+regression/resource evaluation and exact-source CI evidence are now available in
+[the report](docs/samples/python/french_conversation_phone/reports/README.md).
+Each CI job also passed two model-free core phone checks and 32 nearest anonymizer
+checks; 25 model-dependent phone tests and full optional suites were not run.
 
 The grammar, role/boundary policy and metrics were frozen before implementation:
 [scope](docs/samples/python/french_conversation_phone/scope.md),
 [fixture manifest](docs/samples/python/french_conversation_phone/fixtures/manifest.json).
 The corpus is project-authored and synthetic: 100 positive and 120 negative
-conversations, split by scenario family. Only development positives were used
-to check normalization. Release fixtures were checked structurally and by hash,
-not run as a full evaluation. Some release cases and all release families overlap
-known baseline/unit probes, so the later report must call this frozen
-project-authored regression evaluation, not an independent or unseen-family holdout.
+conversations, split by scenario family. Development positives checked initial
+normalization. Release fixtures were first checked structurally and by hash,
+then run as a full regression evaluation without changing the source/data pins or
+threshold. Some release cases and all release families overlap known baseline/unit
+probes, so this is project-authored regression evaluation, not independent or
+unseen-family validation. The candidate matches all 120 annotated spans and all
+220 expected outputs; all 80 baseline conversation failures remain in the report.
 
-Next: finish compatibility/resource checks, freeze a candidate and publish a
-baseline-versus-candidate regression report with failures intact. Core integration
-would need a separate design review. No upstream issue, comment or PR has been
-submitted by this fork.
+Next: README recording, fresh-install/release review and an attributable upstream
+proposal if pursued. Core integration would need a separate design review. No
+upstream issue, comment or PR has been submitted by this fork.

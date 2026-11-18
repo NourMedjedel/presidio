@@ -12,11 +12,19 @@ on:
       - presidio-analyzer/uv.lock
       - presidio-anonymizer/pyproject.toml
       - presidio-anonymizer/uv.lock
+      - presidio-analyzer/presidio_analyzer/**
+      - presidio-anonymizer/presidio_anonymizer/**
   pull_request:
     paths:
       - .github/workflows/french-conversation.yml
       - docs/samples/python/french_conversation_phone/**
       - docs/samples/python/conversational_prompt_recognizer/**
+      - presidio-analyzer/pyproject.toml
+      - presidio-analyzer/uv.lock
+      - presidio-anonymizer/pyproject.toml
+      - presidio-anonymizer/uv.lock
+      - presidio-analyzer/presidio_analyzer/**
+      - presidio-anonymizer/presidio_anonymizer/**
 
 permissions:
   contents: read

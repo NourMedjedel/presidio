@@ -5,6 +5,8 @@
 >
 > [Run the sample](docs/samples/python/french_conversation_phone/index.md) · [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md) · [Issues](https://github.com/NourMedjedel/presidio/issues) · [Milestones](https://github.com/NourMedjedel/presidio/milestones)
 >
+> [Measured results](docs/samples/python/french_conversation_phone/reports/README.md): 220 synthetic conversations evaluated; Python 3.11–3.14 CI passes. These are regression results, not independent production validation.
+>
 > French first; Arabic research follows the French release. Original Presidio code and attribution remain below.
 <!-- FRENCH-WORKSTREAM:END -->
 
