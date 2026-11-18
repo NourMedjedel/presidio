@@ -128,6 +128,14 @@ Proposed upstream title: `docs(recipes): evaluate French phone answers in suppor
 The recipe itself adds scripts, documentation and CI coverage; it changes no
 recognizer defaults, scores, package dependencies or versions.
 
+Validation at `d6166b0`: all 248 sample/recipe tests pass locally and in
+[CI on Python 3.11–3.14](https://github.com/NourMedjedel/presidio/actions/runs/44237271364).
+The six recipe tests cover byte-for-byte regeneration, configuration/redaction,
+recall-weighted F₂, saved-result immutability and runnable CLI steps. Recipe-code
+coverage is 97%. A separate fresh clone and virtual environment passed install,
+generation, configuration, full evaluation and saved-report derivation; only the
+download cache was reused. The original frozen report's bytes are unchanged.
+
 Upstream was rechecked before packaging: no matching French recipe was found;
 draft #2316 remains open/unmerged at the same pinned head. **Dependency decision
 still required:** the recipe imports helper modules supplied by this fork.

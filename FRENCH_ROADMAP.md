@@ -23,6 +23,10 @@ remains open. No French release tag has been created.
 [Recipe: data synthesis → configuration → evaluation](docs/recipes/french-phone-conversations/README.md).
 The generator reproduces frozen corpus bytes; F₂ and mean latency are derived
 from the saved evaluation without replacing the original report.
+Recipe validation adds six tests to the 242-test M3 checkpoint: all 248 pass in
+the [four-version CI matrix](https://github.com/NourMedjedel/presidio/actions/runs/44237271364).
+The documented three-stage workflow also passed in a fresh clone/environment;
+new recipe code has 97% coverage.
 
 [Run the sample and reproduce the baseline](docs/samples/python/french_conversation_phone/index.md).
 [Frozen grammar and evaluation policy](docs/samples/python/french_conversation_phone/scope.md).
@@ -78,8 +82,8 @@ The issue bodies contain the deliverables, tests and acceptance criteria.
 
 ## Next action
 
-Validate #10's recipe commands in a fresh checkout and include its tests in the
-Python matrix. Then #11 must settle how the helper modules enter upstream:
+Recipe packaging and fresh-checkout validation in #10 are complete. #11 must
+settle how the helper modules enter upstream:
 the recipe imports the French sample and the still-unmerged conversation draft.
 Coordinate that integration shape before submitting a recipe that depends on it.
 The original animation/tag tasks are deferred, not release prerequisites for

@@ -30,6 +30,9 @@ uv run --locked --with ../presidio-anonymizer --with cryptography==50.0.2 \
 ```
 
 Installation needs network access once. Runtime does not contact a model provider.
+These commands passed in a fresh clone and virtual environment (download cache
+reused). [CI](https://github.com/NourMedjedel/presidio/actions/runs/44237271364)
+passes 248 sample/recipe tests on Python 3.11–3.14; recipe-code coverage is 97%.
 The example prints original-position detections and this redacted output:
 
 ```text
