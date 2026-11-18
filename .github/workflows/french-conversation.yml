@@ -1,13 +1,14 @@
-name: French conversation sample
+name: French conversation recipe
 
 on:
   workflow_dispatch:
   push:
-    branches: [main, feat/french-validation]
+    branches: [main, feat/french-validation, feat/french-phone-recipe]
     paths:
       - .github/workflows/french-conversation.yml
       - docs/samples/python/french_conversation_phone/**
       - docs/samples/python/conversational_prompt_recognizer/**
+      - docs/recipes/french-phone-conversations/**
       - presidio-analyzer/pyproject.toml
       - presidio-analyzer/uv.lock
       - presidio-anonymizer/pyproject.toml
@@ -19,6 +20,7 @@ on:
       - .github/workflows/french-conversation.yml
       - docs/samples/python/french_conversation_phone/**
       - docs/samples/python/conversational_prompt_recognizer/**
+      - docs/recipes/french-phone-conversations/**
       - presidio-analyzer/pyproject.toml
       - presidio-analyzer/uv.lock
       - presidio-anonymizer/pyproject.toml
@@ -65,11 +67,13 @@ jobs:
           uv run --locked ruff check --no-force-exclude
           ../docs/samples/python/conversational_prompt_recognizer
           ../docs/samples/python/french_conversation_phone .
+          ../docs/recipes/french-phone-conversations
       - name: Run English and French sample tests
         run: >-
           uv run --locked --with ../presidio-anonymizer --with cryptography==50.0.2
           pytest ../docs/samples/python/conversational_prompt_recognizer
-          ../docs/samples/python/french_conversation_phone -q
+          ../docs/samples/python/french_conversation_phone
+          ../docs/recipes/french-phone-conversations -q
       - name: Run model-free core phone checks
         run: >-
           uv run --locked pytest tests/test_phone_recognizer.py

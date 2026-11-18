@@ -204,10 +204,12 @@ local copy. When upstream changes, recheck it before rebasing or submitting work
 The local English engine keeps its original defaults and results; its synthetic
 CLI now prints entity types, scores and positions instead of values.
 
-## Next gate
+## Recipe route
 
 The [frozen candidate](candidate-v1.json),
 [full regression/resource report](reports/README.md) and CI evidence are available.
-Next: a short README recording and release review. Independent/real-transcript
-validation remains future work; passing synthetic cases is not a guarantee of
-anonymity. Arabic remains a later workstream.
+The [recipe](../../../recipes/french-phone-conversations/README.md) is now the
+primary entry point for generation, configuration and F₂/mean-latency evaluation.
+Animation and a fork release are deferred while its upstream helper integration
+is clarified. Independent/real-transcript validation remains future work;
+passing synthetic cases is not a guarantee of anonymity. Arabic remains later work.

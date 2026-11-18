@@ -35,7 +35,11 @@ For complex flows, consider breaking into multiple notebooks or scripts for bett
 
 ## Available Recipes
 
-Currently, the recipes gallery is being built. Check back soon for recipes covering:
+| Scenario | Implementation | Evaluation |
+| --- | --- | --- |
+| [French phone answers in conversations](french-phone-conversations/README.md) | CPU-only Python scripts: data synthesis, configuration and exact-span evaluation | Precision, recall, F₂ and mean latency on project-authored synthetic data; known probe overlap |
+
+The recipes gallery is being built. Additional examples are planned for:
 
 - **Financial Domain**: Chat conversations, transaction logs, customer service interactions
 - **Healthcare Domain**: Clinical notes, patient records, medical reports

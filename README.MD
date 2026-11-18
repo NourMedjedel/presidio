@@ -1,13 +1,13 @@
 <!-- FRENCH-WORKSTREAM:START -->
-> **French conversation redaction workstream - experimental**
+> **French phone conversations — recipe in this fork**
 >
 > An opt-in sample recognizes French spoken-phone answers across bounded speaker turns and redacts their original spans. Incomplete or corrected answers require review and withhold output. Experimental; no extension is released yet.
 >
-> [Run the sample](docs/samples/python/french_conversation_phone/index.md) · [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md) · [Issues](https://github.com/NourMedjedel/presidio/issues) · [Milestones](https://github.com/NourMedjedel/presidio/milestones)
+> [Run the recipe: data → configuration → evaluation](docs/recipes/french-phone-conversations/README.md) · [Implementation](docs/samples/python/french_conversation_phone/index.md) · [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md)
 >
 > [Measured results](docs/samples/python/french_conversation_phone/reports/README.md): 220 synthetic conversations evaluated; Python 3.11–3.14 CI passes. These are regression results, not independent production validation.
 >
-> French first; Arabic research follows the French release. Original Presidio code and attribution remain below.
+> Recipe integration depends on the existing conversation draft; no upstream submission or fork release has been made. Arabic remains later work. Original Presidio code and attribution remain below.
 <!-- FRENCH-WORKSTREAM:END -->
 
 # Presidio - Data Protection and De-identification SDK
