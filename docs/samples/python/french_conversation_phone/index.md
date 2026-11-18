@@ -8,7 +8,7 @@ It runs locally on CPU with no LLM, API account or NLP-model download.
 **Implemented:** French normalization, bounded same-speaker recognition, disjoint
 spans, a separate review gate and public Analyzer-to-Anonymizer redaction. This is
 a phone-only experiment, not a guarantee that text is anonymous. The frozen
-release corpus and full supported-Python matrix remain unevaluated; no release
+full release corpus and supported-Python matrix remain unevaluated; no release
 accuracy is claimed.
 
 ## Run from a checkout
@@ -104,8 +104,9 @@ the phone and conversation recognizers; it is not a comparison with French NER.
 
 These eight cases diagnose a gap. They are not a representative benchmark or
 a performance estimate. The frozen 220-conversation corpus is for the later
-recognizer evaluation; its release split has not been evaluated or used for
-tuning the normalizer.
+recognizer evaluation. The full release file has not been run, but its families
+and some exact cases overlap baseline/unit probes. Report it as frozen
+project-authored regression evaluation, not independent or unseen-family validation.
 
 The extended French recognizer matches all eight diagnostic cases exactly;
 [results and pinned implementation hashes](conversation-probe-results.json).
@@ -202,6 +203,6 @@ CLI now prints entity types, scores and positions instead of values.
 ## Next gate
 
 Complete the supported-Python compatibility checks and resource measurements,
-freeze the candidate, then run the release corpus once and publish failures
+freeze the candidate, then run the full release corpus and publish failures
 alongside exact-span metrics. Meet those gates before tagging a release or
 presenting a demo as validated redaction. Arabic remains a later workstream.

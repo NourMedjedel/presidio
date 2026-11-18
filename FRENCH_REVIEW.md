@@ -106,9 +106,11 @@ The grammar, role/boundary policy and metrics were frozen before implementation:
 The corpus is project-authored and synthetic: 100 positive and 120 negative
 conversations, split by scenario family. Only development positives were used
 to check normalization. Release fixtures were checked structurally and by hash,
-not evaluated or used for tuning.
+not run as a full evaluation. Some release cases and all release families overlap
+known baseline/unit probes, so the later report must call this frozen
+project-authored regression evaluation, not an independent or unseen-family holdout.
 
 Next: finish compatibility/resource checks, freeze a candidate and publish a
-baseline-versus-candidate holdout report with failures intact. Core integration
+baseline-versus-candidate regression report with failures intact. Core integration
 would need a separate design review. No upstream issue, comment or PR has been
 submitted by this fork.

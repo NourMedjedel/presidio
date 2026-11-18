@@ -13,6 +13,8 @@ redaction. Review candidates withhold transcript output. Tests pass on Python
 100% for French normalization and the configured recognizer. Eight diagnostic
 probes match exactly. The 220-conversation frozen release corpus and full
 Python compatibility matrix remain unevaluated; no release accuracy is claimed.
+Some release cases overlap known probes: the corpus is frozen project-authored
+regression evaluation, not independent or unseen-family validation.
 
 [Run the sample and reproduce the baseline](docs/samples/python/french_conversation_phone/index.md).
 [Frozen grammar and evaluation policy](docs/samples/python/french_conversation_phone/scope.md).
@@ -70,7 +72,7 @@ The issue bodies contain the deliverables, tests and acceptance criteria.
 ## Next action
 
 Finish #7's supported-Python compatibility checks, confirm input/resource
-measurements, then freeze a release candidate and run #9's holdout evaluation
+measurements, then freeze a release candidate and run #9's full corpus evaluation
 without retuning on its results. Preserve failures in the report. Only after
 these gates should #10 add a README recording and #11 tag a release.
 
