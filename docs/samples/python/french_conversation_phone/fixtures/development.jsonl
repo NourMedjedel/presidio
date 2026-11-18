@@ -1,0 +1,140 @@
+{"id":"digits-00","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 12.","expected_spans":[[52,66]],"canonical_phone":"0612345612"}
+{"id":"spoken_digits-00","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un deux.","expected_spans":[[52,98]],"canonical_phone":"0612345612"}
+{"id":"spoken_groups-00","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, douze.","expected_spans":[[52,104]],"canonical_phone":"0612345612"}
+{"id":"quantity-00","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: douze.","expected_spans":[]}
+{"id":"price-00","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: douze euros.","expected_spans":[]}
+{"id":"date-00","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 1/12/2026.","expected_spans":[]}
+{"id":"order_reference-00","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, douze.","expected_spans":[]}
+{"id":"digits-01","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 13.","expected_spans":[[52,66]],"canonical_phone":"0612345613"}
+{"id":"spoken_digits-01","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un trois.","expected_spans":[[52,99]],"canonical_phone":"0612345613"}
+{"id":"spoken_groups-01","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, treize.","expected_spans":[[52,105]],"canonical_phone":"0612345613"}
+{"id":"quantity-01","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: treize.","expected_spans":[]}
+{"id":"price-01","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: treize euros.","expected_spans":[]}
+{"id":"date-01","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 2/12/2026.","expected_spans":[]}
+{"id":"order_reference-01","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, treize.","expected_spans":[]}
+{"id":"digits-02","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 14.","expected_spans":[[52,66]],"canonical_phone":"0612345614"}
+{"id":"spoken_digits-02","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un quatre.","expected_spans":[[52,100]],"canonical_phone":"0612345614"}
+{"id":"spoken_groups-02","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatorze.","expected_spans":[[52,107]],"canonical_phone":"0612345614"}
+{"id":"quantity-02","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: quatorze.","expected_spans":[]}
+{"id":"price-02","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: quatorze euros.","expected_spans":[]}
+{"id":"date-02","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 3/12/2026.","expected_spans":[]}
+{"id":"order_reference-02","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatorze.","expected_spans":[]}
+{"id":"digits-03","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 15.","expected_spans":[[52,66]],"canonical_phone":"0612345615"}
+{"id":"spoken_digits-03","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un cinq.","expected_spans":[[52,98]],"canonical_phone":"0612345615"}
+{"id":"spoken_groups-03","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quinze.","expected_spans":[[52,105]],"canonical_phone":"0612345615"}
+{"id":"quantity-03","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: quinze.","expected_spans":[]}
+{"id":"price-03","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: quinze euros.","expected_spans":[]}
+{"id":"date-03","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 4/12/2026.","expected_spans":[]}
+{"id":"order_reference-03","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quinze.","expected_spans":[]}
+{"id":"digits-04","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 16.","expected_spans":[[52,66]],"canonical_phone":"0612345616"}
+{"id":"spoken_digits-04","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un six.","expected_spans":[[52,97]],"canonical_phone":"0612345616"}
+{"id":"spoken_groups-04","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, seize.","expected_spans":[[52,104]],"canonical_phone":"0612345616"}
+{"id":"quantity-04","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: seize.","expected_spans":[]}
+{"id":"price-04","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: seize euros.","expected_spans":[]}
+{"id":"date-04","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 5/12/2026.","expected_spans":[]}
+{"id":"order_reference-04","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, seize.","expected_spans":[]}
+{"id":"digits-05","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 17.","expected_spans":[[52,66]],"canonical_phone":"0612345617"}
+{"id":"spoken_digits-05","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un sept.","expected_spans":[[52,98]],"canonical_phone":"0612345617"}
+{"id":"spoken_groups-05","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, dix-sept.","expected_spans":[[52,107]],"canonical_phone":"0612345617"}
+{"id":"quantity-05","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: dix-sept.","expected_spans":[]}
+{"id":"price-05","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: dix-sept euros.","expected_spans":[]}
+{"id":"date-05","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 6/12/2026.","expected_spans":[]}
+{"id":"order_reference-05","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, dix-sept.","expected_spans":[]}
+{"id":"digits-06","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 18.","expected_spans":[[52,66]],"canonical_phone":"0612345618"}
+{"id":"spoken_digits-06","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un huit.","expected_spans":[[52,98]],"canonical_phone":"0612345618"}
+{"id":"spoken_groups-06","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, dix-huit.","expected_spans":[[52,107]],"canonical_phone":"0612345618"}
+{"id":"quantity-06","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: dix-huit.","expected_spans":[]}
+{"id":"price-06","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: dix-huit euros.","expected_spans":[]}
+{"id":"date-06","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 7/12/2026.","expected_spans":[]}
+{"id":"order_reference-06","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, dix-huit.","expected_spans":[]}
+{"id":"digits-07","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 19.","expected_spans":[[52,66]],"canonical_phone":"0612345619"}
+{"id":"spoken_digits-07","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six un neuf.","expected_spans":[[52,98]],"canonical_phone":"0612345619"}
+{"id":"spoken_groups-07","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, dix-neuf.","expected_spans":[[52,107]],"canonical_phone":"0612345619"}
+{"id":"quantity-07","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: dix-neuf.","expected_spans":[]}
+{"id":"price-07","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: dix-neuf euros.","expected_spans":[]}
+{"id":"date-07","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 8/12/2026.","expected_spans":[]}
+{"id":"order_reference-07","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, dix-neuf.","expected_spans":[]}
+{"id":"digits-08","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 20.","expected_spans":[[52,66]],"canonical_phone":"0612345620"}
+{"id":"spoken_digits-08","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six deux zéro.","expected_spans":[[52,100]],"canonical_phone":"0612345620"}
+{"id":"spoken_groups-08","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, vingt.","expected_spans":[[52,104]],"canonical_phone":"0612345620"}
+{"id":"quantity-08","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: vingt.","expected_spans":[]}
+{"id":"price-08","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: vingt euros.","expected_spans":[]}
+{"id":"date-08","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 9/12/2026.","expected_spans":[]}
+{"id":"order_reference-08","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, vingt.","expected_spans":[]}
+{"id":"digits-09","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 21.","expected_spans":[[52,66]],"canonical_phone":"0612345621"}
+{"id":"spoken_digits-09","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six deux un.","expected_spans":[[52,98]],"canonical_phone":"0612345621"}
+{"id":"spoken_groups-09","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, vingt et un.","expected_spans":[[52,110]],"canonical_phone":"0612345621"}
+{"id":"quantity-09","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: vingt et un.","expected_spans":[]}
+{"id":"price-09","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: vingt et un euros.","expected_spans":[]}
+{"id":"date-09","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 10/12/2026.","expected_spans":[]}
+{"id":"order_reference-09","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, vingt et un.","expected_spans":[]}
+{"id":"digits-10","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 22.","expected_spans":[[52,66]],"canonical_phone":"0612345622"}
+{"id":"spoken_digits-10","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six deux deux.","expected_spans":[[52,100]],"canonical_phone":"0612345622"}
+{"id":"spoken_groups-10","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, vingt-deux.","expected_spans":[[52,109]],"canonical_phone":"0612345622"}
+{"id":"quantity-10","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: vingt-deux.","expected_spans":[]}
+{"id":"price-10","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: vingt-deux euros.","expected_spans":[]}
+{"id":"date-10","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 11/12/2026.","expected_spans":[]}
+{"id":"order_reference-10","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, vingt-deux.","expected_spans":[]}
+{"id":"digits-11","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 34.","expected_spans":[[52,66]],"canonical_phone":"0612345634"}
+{"id":"spoken_digits-11","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six trois quatre.","expected_spans":[[52,103]],"canonical_phone":"0612345634"}
+{"id":"spoken_groups-11","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, trente-quatre.","expected_spans":[[52,112]],"canonical_phone":"0612345634"}
+{"id":"quantity-11","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: trente-quatre.","expected_spans":[]}
+{"id":"price-11","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: trente-quatre euros.","expected_spans":[]}
+{"id":"date-11","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 12/12/2026.","expected_spans":[]}
+{"id":"order_reference-11","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, trente-quatre.","expected_spans":[]}
+{"id":"digits-12","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 45.","expected_spans":[[52,66]],"canonical_phone":"0612345645"}
+{"id":"spoken_digits-12","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six quatre cinq.","expected_spans":[[52,102]],"canonical_phone":"0612345645"}
+{"id":"spoken_groups-12","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quarante-cinq.","expected_spans":[[52,112]],"canonical_phone":"0612345645"}
+{"id":"quantity-12","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: quarante-cinq.","expected_spans":[]}
+{"id":"price-12","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: quarante-cinq euros.","expected_spans":[]}
+{"id":"date-12","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 13/12/2026.","expected_spans":[]}
+{"id":"order_reference-12","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quarante-cinq.","expected_spans":[]}
+{"id":"digits-13","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 56.","expected_spans":[[52,66]],"canonical_phone":"0612345656"}
+{"id":"spoken_digits-13","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six cinq six.","expected_spans":[[52,99]],"canonical_phone":"0612345656"}
+{"id":"spoken_groups-13","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, cinquante-six.","expected_spans":[[52,112]],"canonical_phone":"0612345656"}
+{"id":"quantity-13","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: cinquante-six.","expected_spans":[]}
+{"id":"price-13","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: cinquante-six euros.","expected_spans":[]}
+{"id":"date-13","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 14/12/2026.","expected_spans":[]}
+{"id":"order_reference-13","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, cinquante-six.","expected_spans":[]}
+{"id":"digits-14","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 67.","expected_spans":[[52,66]],"canonical_phone":"0612345667"}
+{"id":"spoken_digits-14","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six six sept.","expected_spans":[[52,99]],"canonical_phone":"0612345667"}
+{"id":"spoken_groups-14","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante-sept.","expected_spans":[[52,112]],"canonical_phone":"0612345667"}
+{"id":"quantity-14","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: soixante-sept.","expected_spans":[]}
+{"id":"price-14","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: soixante-sept euros.","expected_spans":[]}
+{"id":"date-14","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 15/12/2026.","expected_spans":[]}
+{"id":"order_reference-14","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante-sept.","expected_spans":[]}
+{"id":"digits-15","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 71.","expected_spans":[[52,66]],"canonical_phone":"0612345671"}
+{"id":"spoken_digits-15","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six sept un.","expected_spans":[[52,98]],"canonical_phone":"0612345671"}
+{"id":"spoken_groups-15","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante et onze.","expected_spans":[[52,115]],"canonical_phone":"0612345671"}
+{"id":"quantity-15","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: soixante et onze.","expected_spans":[]}
+{"id":"price-15","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: soixante et onze euros.","expected_spans":[]}
+{"id":"date-15","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 16/12/2026.","expected_spans":[]}
+{"id":"order_reference-15","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante et onze.","expected_spans":[]}
+{"id":"digits-16","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 78.","expected_spans":[[52,66]],"canonical_phone":"0612345678"}
+{"id":"spoken_digits-16","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six sept huit.","expected_spans":[[52,100]],"canonical_phone":"0612345678"}
+{"id":"spoken_groups-16","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante-dix-huit.","expected_spans":[[52,116]],"canonical_phone":"0612345678"}
+{"id":"quantity-16","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: soixante-dix-huit.","expected_spans":[]}
+{"id":"price-16","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: soixante-dix-huit euros.","expected_spans":[]}
+{"id":"date-16","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 17/12/2026.","expected_spans":[]}
+{"id":"order_reference-16","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante-dix-huit.","expected_spans":[]}
+{"id":"digits-17","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 80.","expected_spans":[[52,66]],"canonical_phone":"0612345680"}
+{"id":"spoken_digits-17","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six huit zéro.","expected_spans":[[52,100]],"canonical_phone":"0612345680"}
+{"id":"spoken_groups-17","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatre-vingts.","expected_spans":[[52,112]],"canonical_phone":"0612345680"}
+{"id":"quantity-17","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: quatre-vingts.","expected_spans":[]}
+{"id":"price-17","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: quatre-vingts euros.","expected_spans":[]}
+{"id":"date-17","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 18/12/2026.","expected_spans":[]}
+{"id":"order_reference-17","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatre-vingts.","expected_spans":[]}
+{"id":"digits-18","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 91.","expected_spans":[[52,66]],"canonical_phone":"0612345691"}
+{"id":"spoken_digits-18","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six neuf un.","expected_spans":[[52,98]],"canonical_phone":"0612345691"}
+{"id":"spoken_groups-18","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatre-vingt-onze.","expected_spans":[[52,116]],"canonical_phone":"0612345691"}
+{"id":"quantity-18","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: quatre-vingt-onze.","expected_spans":[]}
+{"id":"price-18","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: quatre-vingt-onze euros.","expected_spans":[]}
+{"id":"date-18","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 19/12/2026.","expected_spans":[]}
+{"id":"order_reference-18","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatre-vingt-onze.","expected_spans":[]}
+{"id":"digits-19","family":"digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 99.","expected_spans":[[52,66]],"canonical_phone":"0612345699"}
+{"id":"spoken_digits-19","family":"spoken_digits","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six neuf neuf.","expected_spans":[[52,100]],"canonical_phone":"0612345699"}
+{"id":"spoken_groups-19","family":"spoken_groups","text":"AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatre-vingt-dix-neuf.","expected_spans":[[52,120]],"canonical_phone":"0612345699"}
+{"id":"quantity-19","family":"quantity","text":"AGENT: Combien de participants ?\nCLIENT: quatre-vingt-dix-neuf.","expected_spans":[]}
+{"id":"price-19","family":"price","text":"AGENT: Quel est le prix ?\nCLIENT: quatre-vingt-dix-neuf euros.","expected_spans":[]}
+{"id":"date-19","family":"date","text":"AGENT: À quelle date ?\nCLIENT: 20/12/2026.","expected_spans":[]}
+{"id":"order_reference-19","family":"order_reference","text":"AGENT: Quel est votre numéro de commande ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, quatre-vingt-dix-neuf.","expected_spans":[]}

@@ -1,0 +1,218 @@
+{
+  "model": "none",
+  "language": "fr",
+  "region": "FR",
+  "threshold": 0.35,
+  "nlp": "NoOpNlpEngine; no NER/token/lemma model; French context words configured but no implicit textual context boost",
+  "python": "3.12.14",
+  "versions": {
+    "presidio-analyzer": "2.2.366",
+    "phonenumbers": "9.0.41",
+    "spacy": "3.8.16"
+  },
+  "draft_sha": "ddfd1893dd78e72f00a1100124d1738dbeab95e9",
+  "cases": [
+    {
+      "id": "digits-national",
+      "synthetic_transcript": "AGENT: Quel est votre numéro de téléphone ?\nCLIENT: 06 12 34 56 78.",
+      "expected_spans": [
+        [
+          52,
+          66
+        ]
+      ],
+      "results": {
+        "core": {
+          "spans": [
+            [
+              52,
+              66
+            ]
+          ],
+          "scores": [
+            0.4
+          ],
+          "pass": true
+        },
+        "core_plus_configured_draft": {
+          "spans": [
+            [
+              52,
+              66
+            ]
+          ],
+          "scores": [
+            0.85
+          ],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "digits-international",
+      "synthetic_transcript": "AGENT: Quel est votre numéro de téléphone ?\nCLIENT: +33 6 12 34 56 78.",
+      "expected_spans": [
+        [
+          52,
+          69
+        ]
+      ],
+      "results": {
+        "core": {
+          "spans": [
+            [
+              52,
+              69
+            ]
+          ],
+          "scores": [
+            0.4
+          ],
+          "pass": true
+        },
+        "core_plus_configured_draft": {
+          "spans": [
+            [
+              52,
+              69
+            ],
+            [
+              53,
+              69
+            ]
+          ],
+          "scores": [
+            0.4,
+            0.85
+          ],
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "spoken-digits",
+      "synthetic_transcript": "AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six un deux trois quatre cinq six sept huit.",
+      "expected_spans": [
+        [
+          52,
+          100
+        ]
+      ],
+      "results": {
+        "core": {
+          "spans": [],
+          "scores": [],
+          "pass": false
+        },
+        "core_plus_configured_draft": {
+          "spans": [],
+          "scores": [],
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "spoken-groups",
+      "synthetic_transcript": "AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante-dix-huit.",
+      "expected_spans": [
+        [
+          52,
+          116
+        ]
+      ],
+      "results": {
+        "core": {
+          "spans": [],
+          "scores": [],
+          "pass": false
+        },
+        "core_plus_configured_draft": {
+          "spans": [],
+          "scores": [],
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "split-spoken",
+      "synthetic_transcript": "AGENT: Quel est votre numéro de téléphone ?\nCLIENT: zéro six, douze, trente-quatre\nAGENT: Oui.\nCLIENT: cinquante-six, soixante-dix-huit.",
+      "expected_spans": [
+        [
+          52,
+          82
+        ],
+        [
+          103,
+          135
+        ]
+      ],
+      "results": {
+        "core": {
+          "spans": [],
+          "scores": [],
+          "pass": false
+        },
+        "core_plus_configured_draft": {
+          "spans": [],
+          "scores": [],
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "quantity-negative",
+      "synthetic_transcript": "AGENT: Combien de participants ?\nCLIENT: Trente-quatre.",
+      "expected_spans": [],
+      "results": {
+        "core": {
+          "spans": [],
+          "scores": [],
+          "pass": true
+        },
+        "core_plus_configured_draft": {
+          "spans": [],
+          "scores": [],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "price-negative",
+      "synthetic_transcript": "AGENT: Quel est le prix ?\nCLIENT: Quatre-vingt-dix-neuf euros.",
+      "expected_spans": [],
+      "results": {
+        "core": {
+          "spans": [],
+          "scores": [],
+          "pass": true
+        },
+        "core_plus_configured_draft": {
+          "spans": [],
+          "scores": [],
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "missing-context-negative",
+      "synthetic_transcript": "CLIENT: zéro six, douze, trente-quatre, cinquante-six, soixante-dix-huit.",
+      "expected_spans": [],
+      "results": {
+        "core": {
+          "spans": [],
+          "scores": [],
+          "pass": true
+        },
+        "core_plus_configured_draft": {
+          "spans": [],
+          "scores": [],
+          "pass": true
+        }
+      }
+    }
+  ],
+  "fixture_sha256": "e99e97835f31ee52ea80a39f61c7daabd1c37438edd622dbc5426403777c87e8",
+  "upstream_sha": "fd78e974fbf9e15dad1f90de4fc125db39ef4200",
+  "analyzer_lock_sha256": "c553e73b022d37b60d726cf8a7d02ff5056a365d3349de676ef499bf6322beb4",
+  "draft_module_sha256": "261cf67d036317f9bfde54b8978a95b504746e6563a4a5b9f26d2448a1310103"
+}
