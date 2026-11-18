@@ -1,3 +1,13 @@
+<!-- FRENCH-WORKSTREAM:START -->
+> **French conversation redaction workstream - planning stage**
+>
+> This fork is preparing an opt-in French phone-redaction sample for Presidio. No extension is released yet.
+>
+> [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md) · [Issues](https://github.com/NourMedjedel/presidio/issues) · [Milestones](https://github.com/NourMedjedel/presidio/milestones)
+>
+> French first; Arabic research follows the French release. Original Presidio code and attribution remain below.
+<!-- FRENCH-WORKSTREAM:END -->
+
 # Presidio - Data Protection and De-identification SDK
 ## :mega: Presidio has moved to a new home! [Read more here](docs/project_transition.md) :mega:
 **Context aware, pluggable and customizable PII de-identification service for text and images.**
