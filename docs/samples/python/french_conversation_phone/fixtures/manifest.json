@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "frozen_before_normalizer": true,
+  "authorship": "Project-authored, synthetic; not independent or production validation.",
+  "warning": "Generated combinations may coincide with real numbers. Never contact them.",
+  "release_policy": "Scenario-family holdout, not random rows. No tuning on release results. Changes require a new corpus version and disclose prior results.",
+  "files": {
+    "development.jsonl": {
+      "sha256": "abb3244fe878bdad449224e3ea8aeb110d172730e940bfe6a8487926e594f4af",
+      "conversations": 140,
+      "positive": 60,
+      "negative": 80,
+      "families": [
+        "date",
+        "digits",
+        "order_reference",
+        "price",
+        "quantity",
+        "spoken_digits",
+        "spoken_groups"
+      ]
+    },
+    "release.jsonl": {
+      "sha256": "78fff3318f7eb482e67c4f630d0c6d47844e6091b2e5853e1f9154d4843df7c2",
+      "conversations": 80,
+      "positive": 40,
+      "negative": 40,
+      "families": [
+        "international",
+        "split_answer",
+        "topic_change",
+        "unknown_speaker"
+      ]
+    }
+  }
+}
