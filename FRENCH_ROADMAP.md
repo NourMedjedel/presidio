@@ -2,7 +2,8 @@
 
 This fork develops an opt-in Presidio extension for French phone numbers expressed
 in conversation, including spoken groups and answers split across speaker turns.
-Owner: Nour Medjedel. Arabic is deferred until after the French release.
+Owner: Nour Medjedel. The current route is a focused Presidio recipe contribution;
+animation and a separate fork release are deferred. Arabic remains later work.
 
 **Current status (18 November 2026):** M0–M3 completed. The sample recognizes and
 redacts bounded French phone answers with a separate review gate. The exact-source
@@ -15,8 +16,17 @@ for the extension, versus 20/120 spans and 140/220 outputs for the configured co
 Source/data pins, every baseline failure and measurements are published in
 [the report](docs/samples/python/french_conversation_phone/reports/README.md).
 These are narrow project-authored synthetic regression results with known probe
-overlap, not independent or production validation. M4 recording/release review
-remains open; no French release tag has been created.
+overlap, not independent or production validation. M4 now packages that work as
+a recipe following `docs/recipes/CONTRIBUTING.md`; upstream helper integration
+remains open. No French release tag has been created.
+
+[Recipe: data synthesis → configuration → evaluation](docs/recipes/french-phone-conversations/README.md).
+The generator reproduces frozen corpus bytes; F₂ and mean latency are derived
+from the saved evaluation without replacing the original report.
+Recipe validation adds six tests to the 242-test M3 checkpoint: all 248 pass in
+the [four-version CI matrix](https://github.com/NourMedjedel/presidio/actions/runs/44237271364).
+The documented three-stage workflow also passed in a fresh clone/environment;
+new recipe code has 97% coverage.
 
 [Run the sample and reproduce the baseline](docs/samples/python/french_conversation_phone/index.md).
 [Frozen grammar and evaluation policy](docs/samples/python/french_conversation_phone/scope.md).
@@ -48,8 +58,8 @@ are met.
 | [M1 - French numbers and exact text spans](https://github.com/NourMedjedel/presidio/milestone/2) | [#3](https://github.com/NourMedjedel/presidio/issues/3) | Parse the declared French spoken-phone grammar locally, preserving an exact mapping to the original text. No GPU, hosted model or paid API dependency. |
 | [M2 - Conversation-aware phone redaction](https://github.com/NourMedjedel/presidio/milestone/3) | [#4](https://github.com/NourMedjedel/presidio/issues/4), [#5](https://github.com/NourMedjedel/presidio/issues/5) | Recognise prompted French phone answers across bounded speaker turns. Keep each request stateless and return exact, disjoint spans with explainable scores. |
 | [M3 - Presidio integration and release evaluation](https://github.com/NourMedjedel/presidio/milestone/4) | [#6](https://github.com/NourMedjedel/presidio/issues/6), [#7](https://github.com/NourMedjedel/presidio/issues/7), [#8](https://github.com/NourMedjedel/presidio/issues/8), [#9](https://github.com/NourMedjedel/presidio/issues/9) | Verify public Analyzer/Anonymizer and French configuration paths, negative cases, English compatibility, privacy, resource limits and reproducible measurements. |
-| [M4 - Publish French v0.1 sample](https://github.com/NourMedjedel/presidio/milestone/5) | [#10](https://github.com/NourMedjedel/presidio/issues/10), [#11](https://github.com/NourMedjedel/presidio/issues/11) | Ship an offline demo, installation instructions, limitations and an honestly labelled evaluation report. Tag a fork release only after the gates pass; prepare a small attributable upstream contribution. |
-| [Later - Arabic discovery after French v0.1](https://github.com/NourMedjedel/presidio/milestone/6) | [#12](https://github.com/NourMedjedel/presidio/issues/12) | Deferred research only. Review Unicode-digit and Arabic work upstream, choose a language variety and phone region, and define a separate evaluation set after the French release. |
+| [M4 - Prepare French recipe contribution](https://github.com/NourMedjedel/presidio/milestone/5) | [#10](https://github.com/NourMedjedel/presidio/issues/10), [#11](https://github.com/NourMedjedel/presidio/issues/11) | Supply reproducible generation, explicit configuration and evaluation with precision/recall/F₂/mean latency. Resolve the shared-helper dependency and prepare a focused, attributable upstream proposal. Animation and a fork release are deferred. |
+| [Later - Arabic discovery](https://github.com/NourMedjedel/presidio/milestone/6) | [#12](https://github.com/NourMedjedel/presidio/issues/12) | Deferred research only. Recheck Unicode-digit and Arabic work, choose a variety/region and define a separate corpus after reviewing the French recipe. |
 
 ## Work items and dependencies
 
@@ -66,17 +76,18 @@ The issue bodies contain the deliverables, tests and acceptance criteria.
 | [#7](https://github.com/NourMedjedel/presidio/issues/7) | Add false-positive, privacy-boundary and English compatibility regressions | #6 |
 | [#8](https://github.com/NourMedjedel/presidio/issues/8) | Bound input processing and keep demo outputs free of raw PII telemetry | #6 |
 | [#9](https://github.com/NourMedjedel/presidio/issues/9) | Publish a reproducible baseline-versus-French evaluation report | #7, #8 |
-| [#10](https://github.com/NourMedjedel/presidio/issues/10) | Create the offline French demo, usage guide and short README recording | #9 |
-| [#11](https://github.com/NourMedjedel/presidio/issues/11) | Release fr-conversation-v0.1.0 and prepare an attributable upstream contribution | #10 |
-| [#12](https://github.com/NourMedjedel/presidio/issues/12) | Define the Arabic extension after the French release and review existing upstream work | #11 |
+| [#10](https://github.com/NourMedjedel/presidio/issues/10) | Package the French phone recipe with generation/configuration/evaluation and tests | #9 |
+| [#11](https://github.com/NourMedjedel/presidio/issues/11) | Resolve helper integration and prepare the upstream recipe contribution | #10 |
+| [#12](https://github.com/NourMedjedel/presidio/issues/12) | Review the French recipe before defining Arabic scope and existing-work reuse | #11 |
 
 ## Next action
 
-Add #10's short README recording using the tested synthetic split-answer and
-review scenarios. Then complete #11's release review and fresh-install checks
-before tagging the fork sample. Keep benchmark scope and limitations visible.
-An upstream contribution remains a separate attributable proposal, not an
-automatic consequence of a fork release.
+Recipe packaging and fresh-checkout validation in #10 are complete. #11 must
+settle how the helper modules enter upstream:
+the recipe imports the French sample and the still-unmerged conversation draft.
+Coordinate that integration shape before submitting a recipe that depends on it.
+The original animation/tag tasks are deferred, not release prerequisites for
+this route. No upstream issue, message or PR is submitted automatically.
 
 The [draft conversation sample](https://github.com/data-privacy-stack/presidio/pull/2316)
 was rechecked and cherry-picked with original authorship and an origin trailer.
@@ -89,7 +100,7 @@ Do not reopen them. NIR #2314 and SIREN/SIRET #2321 remain outside this scope;
 Unicode digits #2480 and Arabic #2422 are deferred integration work. See the
 [source review](FRENCH_REVIEW.md) for linked status and reuse decisions.
 
-## Frozen release gates (not yet achieved)
+## Historical v0.1 evaluation rubric
 
 The detailed rubric and input bounds were frozen in M0, before implementation
 or tuning, in [scope.md](docs/samples/python/french_conversation_phone/scope.md):
@@ -98,7 +109,8 @@ or tuning, in [scope.md](docs/samples/python/french_conversation_phone/scope.md)
   original-text spans. Separate release and development cases by scenario family.
 - Target: at least 95% exact-span precision and recall on the frozen
   release set, and every named critical regression case passing. These are
-  frozen targets, not achieved results or production guarantees.
+  rubric targets; measured synthetic results are reported separately and are
+  not production guarantees.
 - Measure whole-conversation redaction success, false positives by scenario,
   supported grammar, latency on stated CPU hardware, and remaining failures.
 - No hidden retries, threshold retuning on release cases or deletion of failures.
@@ -125,7 +137,7 @@ Use uv and commit lockfile changes with dependency changes. Do not edit
 `CHANGELOG.md`; upstream release entries are generated. When contributing a
 sample, update the samples index and MkDocs navigation together.
 
-The planned fork tag is `fr-conversation-v0.1.0`, after the gates pass. Do not
+The previously planned fork tag `fr-conversation-v0.1.0` is deferred. Do not
 publish a replacement under Presidio's canonical package name or imply upstream
 endorsement. Prepare small, focused upstream contributions separately; a fork
 release and an upstream merge are different outcomes.
@@ -136,6 +148,6 @@ selectively committing the implementation and required tests/docs.
 
 ## Arabic later
 
-After French v0.1, recheck current Unicode-digit and Arabic contributions. Choose
+After reviewing the French recipe, recheck Unicode-digit and Arabic contributions. Choose
 a language variety and phone region explicitly, then build a separately reviewed
 corpus and baseline. Do not assume French grammar can be translated directly.

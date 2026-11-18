@@ -83,6 +83,7 @@ nav:
     - Home: recipes/index.md
     - Contributing: recipes/CONTRIBUTING.md
     - Template: recipes/template.md
+    - French phone conversations: recipes/french-phone-conversations/README.md
   - Samples:
 
     - Home: samples/index.md
@@ -134,6 +135,10 @@ nav:
     - Demo app:
       - Create a simple demo app using Streamlit: samples/python/streamlit/index.md
 not_in_nav : |
+  recipes/french-phone-conversations/generate_data.py
+  recipes/french-phone-conversations/configure.py
+  recipes/french-phone-conversations/evaluate_recipe.py
+  recipes/french-phone-conversations/test_recipe.py
   design.md
   samples/deployments/index.md
   samples/deployments/data-factory/index.md
