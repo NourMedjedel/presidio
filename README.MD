@@ -1,7 +1,7 @@
 <!-- FRENCH-WORKSTREAM:START -->
 > **French conversation redaction workstream - experimental**
 >
-> Implemented: French spoken-number normalization with exact original-text offsets. Next: conversation-aware recognition and redaction. No extension is released yet.
+> An opt-in sample recognizes French spoken-phone answers across bounded speaker turns and redacts their original spans. Incomplete or corrected answers require review and withhold output. Experimental; no extension is released yet.
 >
 > [Run the sample](docs/samples/python/french_conversation_phone/index.md) · [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md) · [Issues](https://github.com/NourMedjedel/presidio/issues) · [Milestones](https://github.com/NourMedjedel/presidio/milestones)
 >

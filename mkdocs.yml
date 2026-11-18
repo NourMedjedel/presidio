@@ -142,6 +142,15 @@ not_in_nav : |
   samples/docker/index.md
   samples/python/conversational_prompt_recognizer/conversational_prompt_recognizer.py
   samples/python/conversational_prompt_recognizer/test_conversational_prompt_recognizer.py
+  samples/python/french_conversation_phone/scope.md
+  samples/python/french_conversation_phone/baseline.py
+  samples/python/french_conversation_phone/french_numbers.py
+  samples/python/french_conversation_phone/french_phone_recognizer.py
+  samples/python/french_conversation_phone/redact.py
+  samples/python/french_conversation_phone/test_baseline.py
+  samples/python/french_conversation_phone/test_french_numbers.py
+  samples/python/french_conversation_phone/test_french_phone_recognizer.py
+  samples/python/french_conversation_phone/test_redact.py
   samples/python/custom_presidio.py
   samples/python/simple_anonymization_example.py
   samples/python/streamlit/azure_ai_language_wrapper.py

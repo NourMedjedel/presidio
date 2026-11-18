@@ -4,13 +4,15 @@ This fork develops an opt-in Presidio extension for French phone numbers express
 in conversation, including spoken groups and answers split across speaker turns.
 Owner: Nour Medjedel. Arabic is deferred until after the French release.
 
-**Current status (18 November 2026):** M0 and M1 completed. The correctly configured
-baseline reproduces the spoken-French gap; a standalone French normalizer now
-preserves original offsets. Its sample tests pass on Python 3.12.14 (135 tests,
-100% normalizer coverage, 96% combined sample coverage). The frozen corpus has
-100 positive and 120 negative synthetic conversations. Its release split has
-not been evaluated. Conversation recognition, redaction and release gates remain
-open; no French redaction release or production accuracy is claimed.
+**Current status (18 November 2026):** M0, M1 and M2 completed, along with public
+integration (#6) and bounded-input/privacy checks (#8). The sample reuses crmarr's
+draft conversation engine with attribution and adds French normalization,
+same-speaker boundaries, exact disjoint spans and public Analyzer-to-Anonymizer
+redaction. Review candidates withhold transcript output. Tests pass on Python
+3.12.14: 226 tests, 94% combined sample coverage, 93% changed-line coverage, and
+100% for French normalization and the configured recognizer. Eight diagnostic
+probes match exactly. The 220-conversation frozen release corpus and full
+Python compatibility matrix remain unevaluated; no release accuracy is claimed.
 
 [Run the sample and reproduce the baseline](docs/samples/python/french_conversation_phone/index.md).
 [Frozen grammar and evaluation policy](docs/samples/python/french_conversation_phone/scope.md).
@@ -32,9 +34,10 @@ implementation are separate follow-ups.
 
 ## Milestones
 
-Work proceeds by acceptance gates, not invented deadlines. M0 and M1 are complete;
-M2 is next. M3, M4 and Arabic remain open. A milestone is complete only when its
-linked criteria are met.
+Work proceeds by acceptance gates, not invented deadlines. M0–M2 are complete.
+M3 remains open for #7 (compatibility/regressions) and #9 (release evaluation);
+#6 and #8 are complete. M4 and Arabic remain open. A milestone is complete only
+when its linked criteria are met.
 
 | Milestone | Issues | Exit criteria |
 | --- | --- | --- |
@@ -66,12 +69,16 @@ The issue bodies contain the deliverables, tests and acceptance criteria.
 
 ## Next action
 
-Recheck the head of upstream conversation-sample PR #2316. Reuse or rebase its
-conversation engine and add a French-normalizer callback, with attribution.
-Implement the frozen speaker/prompt policy in #4, then disjoint spans in #5.
-The draft comparison also exposed a `+33` overlapping span omitting `+`; track
-that integration case in #5 without changing the already-correct core phone
-recognizer. No generic conversation engine is copied into this first step.
+Finish #7's supported-Python compatibility checks, confirm input/resource
+measurements, then freeze a release candidate and run #9's holdout evaluation
+without retuning on its results. Preserve failures in the report. Only after
+these gates should #10 add a README recording and #11 tag a release.
+
+The [draft conversation sample](https://github.com/data-privacy-stack/presidio/pull/2316)
+was rechecked and cherry-picked with original authorship and an origin trailer.
+Its English defaults are retained; French uses an opt-in callback and bounded
+policy. The `+33` overlap case now produces one complete span and clean anonymizer
+output in the combined registry. Core phone defaults are unchanged.
 
 Already solved: French-region typo #2008/#2009 and normalization interface #2397.
 Do not reopen them. NIR #2314 and SIREN/SIRET #2321 remain outside this scope;

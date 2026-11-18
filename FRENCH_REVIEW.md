@@ -62,7 +62,7 @@ PRs before implementation and before an upstream submission.
 - Dependencies use uv; changes to package dependencies and their lockfile belong
   in the same commit. Heavy optional models are unnecessary for planning.
 
-## Runtime findings and first implementation
+## Runtime findings and current implementation
 
 The registry and analyzer use `fr`, `PhoneRecognizer` uses `fr` and region `FR`,
 and the threshold is `0.35`. `NoOpNlpEngine` supplies no NER/token/lemma model;
@@ -75,13 +75,30 @@ omitting `+`. Quantity, price and missing-prompt negatives produce no matches.
 See the [reproduction commands and complete case results](docs/samples/python/french_conversation_phone/index.md).
 These eight cases are diagnostic, not an accuracy claim.
 
-The first implementation is an independent local French normalizer with the
-draft's `(normalized_text, offset_map)` contract. It does not vendor the draft,
-modify shared defaults, add a core recognizer or change package dependencies.
-Samples index and MkDocs navigation are updated. Tests pass on Python 3.12.14:
-135 cases, 100% coverage for the normalizer, 96% for the combined sample code;
-Ruff passes for the sample and analyzer. Other supported Python versions and
-full end-to-end redaction remain later gates.
+The first implementation supplied an independent French normalizer with the
+draft's `(normalized_text, offset_map)` contract. The next step rechecked the
+unchanged draft and cherry-picked it with crmarr's authorship and an origin
+trailer (`4991494`). A trusted normalizer callback and optional bounded policy
+extend that sample; legacy English detection defaults remain unchanged. The
+synthetic CLI prints positions instead of values. No core recognizer, shared
+default or canonical package dependency is changed.
+
+French recognition now consumes prompts once, enforces speaker/boundary limits,
+retains exact disjoint spans, and assigns explicit 0.7 validated / 0.2 review
+scores. A separate review gate runs before combined Analyzer result de-duplication;
+ambiguous/corrected/withdrawn answers withhold output rather than being hidden by
+a generic phone score. Public Anonymizer replacement keeps agent turns intact
+and removes the full international prefix. Unknown prompts and unmarked
+corrections remain documented limitations, not a claim of anonymity.
+
+Tests pass on Python 3.12.14: 226 cases including the original English tests,
+100% coverage for French normalization and the configured recognizer, 94% across
+sample modules and 93% of changed executable lines. Ruff passes for the sample
+and analyzer. Source hashes and all eight diagnostic outcomes are in
+[the new probe report](docs/samples/python/french_conversation_phone/conversation-probe-results.json).
+These diagnostics do not evaluate the frozen release corpus or establish a
+production accuracy estimate. Full supported-Python compatibility and release
+evaluation remain open.
 
 The grammar, role/boundary policy and metrics were frozen before implementation:
 [scope](docs/samples/python/french_conversation_phone/scope.md),
@@ -91,7 +108,7 @@ conversations, split by scenario family. Only development positives were used
 to check normalization. Release fixtures were checked structurally and by hash,
 not evaluated or used for tuning.
 
-Next: reuse/rebase #2316 with attribution, add the French callback and bounded
-conversation policy, then verify original disjoint spans and public redaction.
-Core integration would need a separate design review. No upstream issue, comment
-or PR has been submitted by this fork.
+Next: finish compatibility/resource checks, freeze a candidate and publish a
+baseline-versus-candidate holdout report with failures intact. Core integration
+would need a separate design review. No upstream issue, comment or PR has been
+submitted by this fork.
