@@ -1,9 +1,9 @@
 <!-- FRENCH-WORKSTREAM:START -->
-> **French conversation redaction workstream - planning stage**
+> **French conversation redaction workstream - experimental**
 >
-> This fork is preparing an opt-in French phone-redaction sample for Presidio. No extension is released yet.
+> Implemented: French spoken-number normalization with exact original-text offsets. Next: conversation-aware recognition and redaction. No extension is released yet.
 >
-> [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md) · [Issues](https://github.com/NourMedjedel/presidio/issues) · [Milestones](https://github.com/NourMedjedel/presidio/milestones)
+> [Run the sample](docs/samples/python/french_conversation_phone/index.md) · [Roadmap](FRENCH_ROADMAP.md) · [Source review](FRENCH_REVIEW.md) · [Issues](https://github.com/NourMedjedel/presidio/issues) · [Milestones](https://github.com/NourMedjedel/presidio/milestones)
 >
 > French first; Arabic research follows the French release. Original Presidio code and attribution remain below.
 <!-- FRENCH-WORKSTREAM:END -->

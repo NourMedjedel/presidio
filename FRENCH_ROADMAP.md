@@ -1,12 +1,19 @@
 # French conversation-aware phone redaction
 
-This fork plans an opt-in Presidio extension for French phone numbers expressed
+This fork develops an opt-in Presidio extension for French phone numbers expressed
 in conversation, including spoken groups and answers split across speaker turns.
 Owner: Nour Medjedel. Arabic is deferred until after the French release.
 
-**Current status:** upstream source and related contributions reviewed; issues and
-milestones published. No French extension has been implemented, benchmarked or
-released in this fork yet. Runtime reproduction is the first implementation gate.
+**Current status (18 November 2026):** M0 and M1 completed. The correctly configured
+baseline reproduces the spoken-French gap; a standalone French normalizer now
+preserves original offsets. Its sample tests pass on Python 3.12.14 (135 tests,
+100% normalizer coverage, 96% combined sample coverage). The frozen corpus has
+100 positive and 120 negative synthetic conversations. Its release split has
+not been evaluated. Conversation recognition, redaction and release gates remain
+open; no French redaction release or production accuracy is claimed.
+
+[Run the sample and reproduce the baseline](docs/samples/python/french_conversation_phone/index.md).
+[Frozen grammar and evaluation policy](docs/samples/python/french_conversation_phone/scope.md).
 
 ## Scope of v0.1
 
@@ -25,8 +32,9 @@ implementation are separate follow-ups.
 
 ## Milestones
 
-Work proceeds by acceptance gates, not invented deadlines. A milestone is complete
-only when its linked criteria are met; publishing this plan does not complete it.
+Work proceeds by acceptance gates, not invented deadlines. M0 and M1 are complete;
+M2 is next. M3, M4 and Arabic remain open. A milestone is complete only when its
+linked criteria are met.
 
 | Milestone | Issues | Exit criteria |
 | --- | --- | --- |
@@ -56,21 +64,30 @@ The issue bodies contain the deliverables, tests and acceptance criteria.
 | [#11](https://github.com/NourMedjedel/presidio/issues/11) | Release fr-conversation-v0.1.0 and prepare an attributable upstream contribution | #10 |
 | [#12](https://github.com/NourMedjedel/presidio/issues/12) | Define the Arabic extension after the French release and review existing upstream work | #11 |
 
-## First action
+## Next action
 
-Reproduce a correctly configured French baseline and compare it with the current
-conversation-sample PR. Include cases that already work. Implement only a
-remaining gap demonstrated by those results. See [the source review](FRENCH_REVIEW.md).
+Recheck the head of upstream conversation-sample PR #2316. Reuse or rebase its
+conversation engine and add a French-normalizer callback, with attribution.
+Implement the frozen speaker/prompt policy in #4, then disjoint spans in #5.
+The draft comparison also exposed a `+33` overlapping span omitting `+`; track
+that integration case in #5 without changing the already-correct core phone
+recognizer. No generic conversation engine is copied into this first step.
 
-## Proposed release gates
+Already solved: French-region typo #2008/#2009 and normalization interface #2397.
+Do not reopen them. NIR #2314 and SIREN/SIRET #2321 remain outside this scope;
+Unicode digits #2480 and Arabic #2422 are deferred integration work. See the
+[source review](FRENCH_REVIEW.md) for linked status and reuse decisions.
 
-Freeze the rubric and thresholds in M0, before implementation or tuning:
+## Frozen release gates (not yet achieved)
+
+The detailed rubric and input bounds were frozen in M0, before implementation
+or tuning, in [scope.md](docs/samples/python/french_conversation_phone/scope.md):
 
 - At least 100 synthetic positive and 100 negative conversations, with exact
   original-text spans. Separate release and development cases by scenario family.
-- Proposed target: at least 95% exact-span precision and recall on the frozen
+- Target: at least 95% exact-span precision and recall on the frozen
   release set, and every named critical regression case passing. These are
-  proposed targets, not achieved results or production guarantees.
+  frozen targets, not achieved results or production guarantees.
 - Measure whole-conversation redaction success, false positives by scenario,
   supported grammar, latency on stated CPU hardware, and remaining failures.
 - No hidden retries, threshold retuning on release cases or deletion of failures.

@@ -1,15 +1,20 @@
 # Upstream review for the French workstream
 
-Review date: 18 November 2026. Source inspection and GitHub API review only;
-the analyzer dependency environment and runtime benchmark have not been run.
+Review date: 18 November 2026. Source inspection, a refreshed GitHub API review,
+and an eight-case model-free runtime probe. This is gap reproduction, not a
+representative benchmark. The French redaction release has not been evaluated.
 
 ## Reviewed baseline
 
 - Upstream: [https://github.com/data-privacy-stack/presidio](https://github.com/data-privacy-stack/presidio).
 - Source commit: [`fd78e974fbf9e15dad1f90de4fc125db39ef4200`](https://github.com/data-privacy-stack/presidio/commit/fd78e974fbf9e15dad1f90de4fc125db39ef4200).
 - Analyzer package declares version `2.2.366` and Python `>=3.11,<3.15`.
-- Review covers the checked-out main branch, not code in unmerged PRs. PR bodies
-  and patches were inspected separately and remain work owned by their authors.
+- Runtime: Python 3.12.14, analyzer 2.2.366, phonenumbers 9.0.41, spaCy 3.8.16,
+  locked core/development dependencies. No optional hosted/GPU integrations.
+- The core probe uses source main; the separate draft comparison pins #2316 head
+  `ddfd1893dd78e72f00a1100124d1738dbeab95e9`, by **crmarr**. Its module SHA-256
+  and analyzer lock hash are recorded in
+  [baseline-results.json](docs/samples/python/french_conversation_phone/baseline-results.json).
 
 ## Existing capabilities
 
@@ -32,6 +37,7 @@ the analyzer dependency environment and runtime benchmark have not been run.
 | Work | State observed | Implication |
 | --- | --- | --- |
 | [Conversation issue #2315](https://github.com/data-privacy-stack/presidio/issues/2315), [sample PR #2316](https://github.com/data-privacy-stack/presidio/pull/2316) | Open issue; draft PR, not merged | English digit vocabulary, prompted card/SSN examples and configurable language. Reuse its design/code with attribution where appropriate; first reproduce the remaining French phone gap. |
+| [French-region typo #2008](https://github.com/data-privacy-stack/presidio/issues/2008), [fix #2009](https://github.com/data-privacy-stack/presidio/pull/2009) | Closed/fixed | Do not reimplement. France is already in the core recognizer. |
 | [French NIR PR #2314](https://github.com/data-privacy-stack/presidio/pull/2314) | Open, not merged | Do not duplicate social-security recognizer work. |
 | [French SIREN/SIRET PR #2321](https://github.com/data-privacy-stack/presidio/pull/2321) | Open, not merged | Business identifiers are outside this phone-only release. |
 | [Unicode-digit PR #2480](https://github.com/data-privacy-stack/presidio/pull/2480) | Open, not merged | Recheck before Arabic work; do not create a competing global digit fix. |
@@ -56,16 +62,36 @@ PRs before implementation and before an upstream submission.
 - Dependencies use uv; changes to package dependencies and their lockfile belong
   in the same commit. Heavy optional models are unnecessary for planning.
 
-## Remaining questions before implementation
+## Runtime findings and first implementation
 
-- Does the current draft sample or another contribution already cover the desired
-  French examples when configured correctly?
-- Which French number forms and speaker-role formats will v0.1 support, and how
-  will incomplete, invalid, corrected or ambiguous answers be labelled?
-- Should the French work extend the draft sample, provide a standalone sample,
-  or ultimately become an opt-in recognizer? Core integration needs design review.
-- Can the exact original-text spans be returned without leaking normalized
-  sensitive values through explanations, telemetry or saved artifacts?
+The registry and analyzer use `fr`, `PhoneRecognizer` uses `fr` and region `FR`,
+and the threshold is `0.35`. `NoOpNlpEngine` supplies no NER/token/lemma model;
+French context words are configured but receive no implicit text-context boost.
+Core detection succeeds for written national and `+33` examples, but misses the
+French spoken-digit, spoken-group and split-answer probes. The configured draft
+also misses these spoken cases and adds an overlapping international span
+omitting `+`. Quantity, price and missing-prompt negatives produce no matches.
 
-The roadmap records these as work, rather than claiming the French gaps have
-already been reproduced or the feature is ready to release.
+See the [reproduction commands and complete case results](docs/samples/python/french_conversation_phone/index.md).
+These eight cases are diagnostic, not an accuracy claim.
+
+The first implementation is an independent local French normalizer with the
+draft's `(normalized_text, offset_map)` contract. It does not vendor the draft,
+modify shared defaults, add a core recognizer or change package dependencies.
+Samples index and MkDocs navigation are updated. Tests pass on Python 3.12.14:
+135 cases, 100% coverage for the normalizer, 96% for the combined sample code;
+Ruff passes for the sample and analyzer. Other supported Python versions and
+full end-to-end redaction remain later gates.
+
+The grammar, role/boundary policy and metrics were frozen before implementation:
+[scope](docs/samples/python/french_conversation_phone/scope.md),
+[fixture manifest](docs/samples/python/french_conversation_phone/fixtures/manifest.json).
+The corpus is project-authored and synthetic: 100 positive and 120 negative
+conversations, split by scenario family. Only development positives were used
+to check normalization. Release fixtures were checked structurally and by hash,
+not evaluated or used for tuning.
+
+Next: reuse/rebase #2316 with attribution, add the French callback and bounded
+conversation policy, then verify original disjoint spans and public redaction.
+Core integration would need a separate design review. No upstream issue, comment
+or PR has been submitted by this fork.
