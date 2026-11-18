@@ -19,7 +19,7 @@ repository root:
 ```bash
 cd presidio-analyzer
 uv sync --locked --group dev
-export PYTHONPATH=../docs/samples/python/conversational_prompt_recognizer
+export PYTHONPATH=../docs/samples/python/conversational_prompt_recognizer:../docs/samples/python/french_conversation_phone
 uv run --locked python ../docs/samples/python/french_conversation_phone/baseline.py
 uv run --locked --with ../presidio-anonymizer --with cryptography==50.0.2 \
   python ../docs/samples/python/french_conversation_phone/redact.py
@@ -106,6 +106,26 @@ These eight cases diagnose a gap. They are not a representative benchmark or
 a performance estimate. The frozen 220-conversation corpus is for the later
 recognizer evaluation; its release split has not been evaluated or used for
 tuning the normalizer.
+
+The extended French recognizer matches all eight diagnostic cases exactly;
+[results and pinned implementation hashes](conversation-probe-results.json).
+The combined sample suite passes **226 tests** on Python 3.12.14, including the
+original English tests, direct/registry construction, a French YAML-loaded core
+registry with the custom sample added, and real anonymizer output. Coverage is
+100% for French normalization and its configured recognizer, 94% across the
+sample modules, and 93% of changed executable lines. Other supported Python
+versions, the frozen release corpus and resource measurements remain release gates.
+
+With the import path configured above, reproduce the current diagnostic check:
+
+```bash
+uv run --locked python - <<'PY'
+import json
+from baseline import create_analyzer, measure
+from french_phone_recognizer import FrenchPhoneConversationRecognizer
+print(json.dumps(measure(create_analyzer(FrenchPhoneConversationRecognizer())), indent=2))
+PY
+```
 
 ## Existing work and reuse
 
